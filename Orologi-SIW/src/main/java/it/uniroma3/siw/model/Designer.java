@@ -1,8 +1,12 @@
 package it.uniroma3.siw.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 
 public class Designer {
@@ -17,6 +21,9 @@ public class Designer {
 	private String cognome;
 	@NotBlank
 	private String nazionalita;
+	
+	@OneToMany(cascade = {CascadeType.ALL}, mappedBy ="designer")
+	private List<Orologio> orologiCreati;
 	
 	public Long getId() {
 		return Id;

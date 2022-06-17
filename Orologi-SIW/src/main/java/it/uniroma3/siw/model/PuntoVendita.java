@@ -1,8 +1,12 @@
 package it.uniroma3.siw.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 
 public class PuntoVendita {
@@ -18,6 +22,11 @@ public class PuntoVendita {
 	private String indirizzo;
 	@NotBlank
 	private String nomeTitolare;
+	
+	@OneToMany(cascade = {CascadeType.ALL}, mappedBy ="puntoVendita")
+	private List<Orologio> orologiInVendita;
+	
+	
 	public Long getId() {
 		return Id;
 	}

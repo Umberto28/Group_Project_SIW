@@ -3,6 +3,8 @@ package it.uniroma3.siw.model;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
 
 public class Orologio {
@@ -17,6 +19,16 @@ public class Orologio {
 	private int prezzo;
 	@NotBlank
 	private String descrizione;
+	
+	
+	@ManyToOne
+	private PuntoVendita puntoVendita;
+	
+	@ManyToOne
+	private Designer designer;
+	
+	@OneToOne
+	private Cinturino cinturino;
 	
 	
 	public Long getId() {

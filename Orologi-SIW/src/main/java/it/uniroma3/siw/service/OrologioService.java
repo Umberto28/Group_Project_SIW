@@ -4,17 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import it.uniroma3.siw.model.Orologio;
 import it.uniroma3.siw.repository.OrologioRepository;
 
+@Service
 public class OrologioService {
 	
 	@Autowired
-	OrologioRepository orologioRepository;
+	private OrologioRepository orologioRepository;
 	
-
 	public boolean alreadyExists(Orologio o) {
 		return this.findAllOrologi().contains(o);
 	}

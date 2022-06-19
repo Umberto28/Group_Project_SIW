@@ -4,12 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import it.uniroma3.siw.model.Cinturino;
-
 import it.uniroma3.siw.repository.CinturinoRepository;
 
+@Service
 public class CinturinoService {
 	
 	@Autowired

@@ -27,7 +27,6 @@ import it.uniroma3.siw.service.OrologioService;
 import it.uniroma3.siw.service.PuntoVenditaService;
 
 @Controller
-
 public class AuthenticationController {
 	
 	@Autowired
@@ -40,13 +39,13 @@ public class AuthenticationController {
 	private CredentialsValidator credentialsValidator;
 	
 	@Autowired
-	OrologioService os;
+	private OrologioService os;
 	@Autowired
-	DesignerService ds;
+	private DesignerService ds;
 	@Autowired
-	CinturinoService cs;
+	private CinturinoService cs;
 	@Autowired
-	PuntoVenditaService pvs;
+	private PuntoVenditaService pvs;
 	
 	
 	

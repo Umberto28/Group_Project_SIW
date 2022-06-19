@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+    <head>
+        <meta charset="UTF-8" />
+        <title>Base</title>
+        <link rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css}" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    </head>
+    <body>
+      <!-- NAVBAR -->
+      <header th:fragment="navbar">
+          <nav class="navbar navbar-expand-lg fixed-top d-flex justify-content-between align-items-center" style="background-color: rgba(0, 0, 0, 0.2);">
+            <a id="homeTitle" class="navbar-brand" th:href="@{/}" style="position: relative;"><img th:src="@{/images/watchIcon.png}" alt="Watch Icon"></a>
+            <div id="navbarNav">
+              <ul class="navbar-nav nav-pills">
+                <li class="nav-item">
+                  <a class="nav-link" th:href="@{/elencoOrologi}" style="color: #26A69A;">Orologi</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" th:href="@{/elencoCinturini}" style="color: #26A69A;">Cinturini</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" th:href="@{/elencoStore}" style="color: #26A69A;">Store</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" th:href="@{/elencoDesigner}" style="color: #26A69A;">Designer</a>
+                </li>
+              </ul>
+            </div>
+            
+            <a class="btn text-white" type="login" th:href="@{/login}" style="background-color: #26A69A;">Sign up | Login</a>
+          </nav>
+        </header>
+
+        <!-- FOOTER -->
+        <footer id="main-footer" class="sticky-bottom" th:fragment="footer" style="background-color: #26A69A;">
+          <div class="container">
+            <div class="row">
+              <div class="col text-light text-center py-3">
+                <h3>Watches Roma Tre</h3>
+                <p> Copyright &copy; 2022 
+                    <br>
+                    Made by <a class="text-white" th:href="@{https://github.com/Umberto28}">Umberto Gentile</a> & <a class="text-white" th:href="@{https://github.com/Edoardo644}">Edoardo Galtieri</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </footer>
+    </body>
+</html>

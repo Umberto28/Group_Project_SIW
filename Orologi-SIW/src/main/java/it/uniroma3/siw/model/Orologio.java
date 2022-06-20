@@ -1,5 +1,7 @@
 package it.uniroma3.siw.model;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,7 +33,7 @@ public class Orologio {
 	private Designer designer;
 	
 	@OneToMany(cascade = {CascadeType.ALL}, mappedBy ="orologioConCinturino")
-	private Cinturino cinturino;
+	private List<Cinturino> cinturino;
 	
 	
 	public Long getId() {
@@ -70,10 +72,10 @@ public class Orologio {
 	public void setDesigner(Designer designer) {
 		this.designer = designer;
 	}
-	public Cinturino getCinturino() {
+	public List<Cinturino> getCinturino() {
 		return cinturino;
 	}
-	public void setCinturino(Cinturino cinturino) {
+	public void setCinturino(List<Cinturino> cinturino) {
 		this.cinturino = cinturino;
 	}
 	

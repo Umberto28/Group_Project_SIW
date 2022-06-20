@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <link th:href='@{https://fonts.googleapis.com/css?family=Sirin Stencil}' rel='stylesheet'>
+        <link rel="stylesheet" th:href="@{/css/index.css}">
+        <link rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css}" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <title>Login</title>
+    </head>
+    <body>
+        <!-- NAVBAR SECTION -->
+        <header th:replace="fragments/base.html :: navbar"></header>
+
+        <!-- BACKGROUND -->
+        <img class="card-img" th:src="@{https://source.unsplash.com/random/1920x950/?watch}">
+        
+        <!-- FORM SECTION -->
+        <div class=" card-img-overlay">
+            <section class="pt-4 pb-4 mt-0 align-items-center d-flex " style="min-height: 100vh; background-size: cover;">
+                <div class="container-fluid">
+                    <div class="row justify-content-center align-items-center d-flex-row text-center h-100">
+                        <div class="col-12 col-md-4 col-lg-3 h-50">
+                            <div class="card bgColor shadow">
+                                <div class="card-body mx-auto">
+                                <h4 class="card-title textFont mt-3 text-center">Login </h4>
+                                <form>
+                                    <div class="form-group input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                                        </div>
+                                        <input name="" class="form-control" placeholder="Email" type="email">
+                                    </div>
+                                    <div class="form-group input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                                        </div>
+                                        <input class="form-control" placeholder="Inserisci password" type="password">
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-block"> Login </button>
+                                    </div>
+                                    <p class="text-center text-muted mt-4 mb-1">Non sei ancora registrato? <a th:href="@{/register}"
+                                        class="fw-bold text-body"><u>Registrati ora </u></a></p>
+                                </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- FOOTER SECTION -->
+        <footer th:replace="fragments/base.html :: footer"></footer>
+
+    </body>
+</html>

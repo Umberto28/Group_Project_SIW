@@ -33,7 +33,11 @@ public class Orologio {
 	private Designer designer;
 	
 	@OneToMany(cascade = {CascadeType.ALL}, mappedBy ="orologioConCinturino")
+<<<<<<< Updated upstream
 	private List<Cinturino> cinturiniPosseduti;
+=======
+	private List<Cinturino> cinturini;
+>>>>>>> Stashed changes
 	
 	
 	public Long getId() {
@@ -72,11 +76,19 @@ public class Orologio {
 	public void setDesigner(Designer designer) {
 		this.designer = designer;
 	}
+<<<<<<< Updated upstream
 	public List<Cinturino> getCinturiniPosseduti() {
 		return cinturiniPosseduti;
 	}
 	public void setCinturiniPosseduti(List<Cinturino> cinturino) {
 		this.cinturiniPosseduti = cinturino;
+=======
+	public List<Cinturino> getCinturino() {
+		return cinturini;
+	}
+	public void setCinturino(List<Cinturino> cinturini) {
+		this.cinturini = cinturini;
+>>>>>>> Stashed changes
 	}
 	
 	

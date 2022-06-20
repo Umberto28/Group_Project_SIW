@@ -22,7 +22,7 @@ public class Cinturino {
 	private int prezzo;
 	
 	@ManyToOne
-	private Orologio orologio;
+	private Orologio orologioConCinturino;
 	
 	@ManyToOne
 	private PuntoVendita puntoVenditaCinturini;
@@ -52,10 +52,10 @@ public class Cinturino {
 		this.prezzo = prezzo;
 	}
 	public Orologio getOrologio() {
-		return orologio;
+		return orologioConCinturino;
 	}
 	public void setOrologio(Orologio orologio) {
-		this.orologio = orologio;
+		this.orologioConCinturino = orologio;
 	}
 	public PuntoVendita getPuntoVenditaCinturini() {
 		return puntoVenditaCinturini;

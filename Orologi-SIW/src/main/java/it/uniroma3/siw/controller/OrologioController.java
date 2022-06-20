@@ -60,7 +60,7 @@ public class OrologioController {
 			return "orologio.html";
 
 		} 
-		model.addAttribute("orlogio", o);
+		model.addAttribute("orologio", o);
 		return "orologioForm.html";
 		
 	}

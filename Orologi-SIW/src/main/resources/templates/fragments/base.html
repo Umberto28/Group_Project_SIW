@@ -3,20 +3,21 @@
     <head>
         <meta charset="UTF-8" />
         <title>Base</title>
-        <link rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css}" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link th:href='@{https://fonts.googleapis.com/css?family=Sirin Stencil}' rel='stylesheet'>
+        <link rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css}" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     </head>
     <body>
       <!-- NAVBAR -->
       <header th:fragment="navbar">
-          <nav class="navbar navbar-expand-lg fixed-top d-flex justify-content-between align-items-center" style="background-color: rgba(0, 0, 0, 0.2);">
+          <nav class="navbar navbar-expand-lg fixed-top d-flex justify-content-between align-items-center" style="background-color: rgba(0, 0, 0, 0.2);font-family: 'Sirin Stencil';">
             <a id="homeTitle" class="navbar-brand" th:href="@{/}" style="position: relative;"><img th:src="@{/images/watchIcon.png}" alt="Watch Icon"></a>
             <div id="navbarNav">
-              <ul class="navbar-nav nav-pills">
+              <ul class="navbar-nav nav-pills" style="font-size: 22px;text-shadow: 1px 1px #000;">
                 <li class="nav-item">
                   <a class="nav-link" th:href="@{/elencoOrologi}" style="color: #26A69A;">Orologi</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" th:href="@{/elencoCinturini}" style="color: #26A69A;">Cinturini</a>
+                  <a class="nav-link" th:href="@{/elencoAccessori}" style="color: #26A69A;">Accessori</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" th:href="@{/elencoStore}" style="color: #26A69A;">Store</a>
@@ -27,12 +28,12 @@
               </ul>
             </div>
             
-            <a class="btn text-white" type="login" th:href="@{/login}" style="background-color: #26A69A;">Sign up | Login</a>
+            <a class="btn rounded-pill shadow text-white" type="login" th:href="@{/login}" style="background-color: #26A69A;">Sign up | Login</a>
           </nav>
         </header>
 
         <!-- FOOTER -->
-        <footer id="main-footer" class="sticky-bottom" th:fragment="footer" style="background-color: #26A69A;">
+        <footer id="main-footer" class="sticky-bottom" th:fragment="footer" style="background-color: #26A69A;font-family: 'Sirin Stencil';">
           <div class="container">
             <div class="row">
               <div class="col text-light text-center py-3">

@@ -3,7 +3,8 @@
     <head>
         <meta charset="UTF-8" />
         <link rel="stylesheet" th:href="@{/css/index.css}">
-        <link rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css}" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link th:href='@{https://fonts.googleapis.com/css?family=Sirin Stencil}' rel='stylesheet'>
+        <link rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css}" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
         <title>Watches Roma Tre</title>
     </head>
     <body>
@@ -11,20 +12,38 @@
         <header th:replace="fragments/base.html :: navbar"></header>
 
         <!-- TITLE SECTION -->
-        <div  class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img th:src="@{/images/sfondoIndex2.jpg}" class="d-block" height="500" width="1920" alt="home image" style="object-fit: cover;">
-                    <div id="home-section" class="carousel-caption">
-                        <p> <span id="title" class="colorTitles" >Catering Roma Tre</span>
-                        <br>
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                        <br>
-                        Deleniti ducimus earum illo cum vitae consequatur.
-                        </p>
+                    <img th:src="@{/images/sfondoIndex2.jpg}" class="d-block" height="600" width="1920" alt="home image" style="object-fit: cover;">
+                    <div class="carousel-caption text-left">
+                        <h1 class="textColor textFont main-title ">Watches Roma Tre</h1>
                     </div>
+                    
                 </div>
             </div>
+        </div>
+
+        <!-- WATCH SECTION -->
+        <div class="p-5 m-5">
+            <div class="mb-5">
+                <span class="textFont text-white text-center bgColor rounded-pill shadow py-2 px-3" style="font-size: 40px;">- I nostri prodotti -</span>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="card card-obj mt-3" style="width: 18rem;height: 20rem;">
+                    <img th:src="@{/images/sfondoIndex4.jpg}" alt="Orologio" class="card-img">
+                </div>
+                <div class="card mt-3" style="width: 18rem;height: 20rem;">
+                    <img th:src="@{/images/sfondoIndex4.jpg}" alt="Orologio" class="card-img">
+                </div>
+                <div class="card mt-3" style="width: 18rem;height: 20rem;">
+                    <img th:src="@{/images/sfondoIndex4.jpg}" alt="Orologio" class="card-img">
+                </div>
+                <div>
+                    <a th:href="@{/elencoOrologi}" class="btn rounded-pill textFont text-white py-2 px-3" style="background-color: #26A69A;">Vedi tutti gli orologi -></a>
+                </div>
+            </div>
+
         </div>
 
         <!-- FOOTER SECTION -->

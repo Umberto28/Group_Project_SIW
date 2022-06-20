@@ -33,7 +33,7 @@ public class Orologio {
 	private Designer designer;
 	
 	@OneToMany(cascade = {CascadeType.ALL}, mappedBy ="orologioConCinturino")
-	private List<Cinturino> cinturino;
+	private List<Cinturino> cinturiniPosseduti;
 	
 	
 	public Long getId() {
@@ -72,11 +72,11 @@ public class Orologio {
 	public void setDesigner(Designer designer) {
 		this.designer = designer;
 	}
-	public List<Cinturino> getCinturino() {
-		return cinturino;
+	public List<Cinturino> getCinturiniPosseduti() {
+		return cinturiniPosseduti;
 	}
-	public void setCinturino(List<Cinturino> cinturino) {
-		this.cinturino = cinturino;
+	public void setCinturiniPosseduti(List<Cinturino> cinturino) {
+		this.cinturiniPosseduti = cinturino;
 	}
 	
 	

@@ -2,13 +2,22 @@ package it.uniroma3.siw.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import it.uniroma3.siw.controller.validator.OrologioValidator;
+import it.uniroma3.siw.model.Designer;
 import it.uniroma3.siw.model.Orologio;
+import it.uniroma3.siw.model.PuntoVendita;
 import it.uniroma3.siw.service.DesignerService;
 import it.uniroma3.siw.service.OrologioService;
 import it.uniroma3.siw.service.PuntoVenditaService;
@@ -25,6 +34,37 @@ public class OrologioController {
 	@Autowired
 	PuntoVenditaService puntoVenditaService;
 	
+	@PostMapping("/admin/orologio")
+	public String addOrologio(@Valid @ModelAttribute("orologio") Orologio o, 
+			BindingResult bindingResult, 
+			@RequestParam(name = "designerScelto") Long Did,
+			@RequestParam(name = "puntoVenditaScelto") Long PVid, Model model) {
+		
+		this.orologioValidator.validate(o, bindingResult);
+		
+		if (!bindingResult.hasErrors()) {
+			
+			Designer d = this.designerService.searchById(Did);
+			PuntoVendita pv = this.puntoVenditaService.searchById(PVid);
+			
+			o.setDesigner(d);
+			o.setPuntoVenditaOrologi(pv);
+			
+			d.getOrologiCreati().add(o);
+			pv.getOrologiInVendita().add(o);
+			
+			this.designerService.inserisci(d);
+			this.puntoVenditaService.inserisci(pv);
+			
+			model.addAttribute("orologio", o);
+			return "orologio.html";
+
+		} 
+		model.addAttribute("orlogio", o);
+		return "orologioForm.html";
+		
+	}
+	
 	@GetMapping("/elencoOrologi")
 	private String getAllOrologi(Model model) {
 		List<Orologio> elencoOrologi = this.orologioService.findAllOrologi();
@@ -38,6 +78,14 @@ public class OrologioController {
 		model.addAttribute("designerDisponibili",this.designerService.findAllDesigner());
 		model.addAttribute("puntiVenditaDisponibili",this.puntoVenditaService.findAllPuntiVendita());
 		return "orologioForm.html";
+	}
+	
+	@GetMapping("/orologio/{id}")
+	private String getOrologio(@PathVariable("id") Long id, Model model) {
+		Orologio orologio =this.orologioService.searchById(id);
+		model.addAttribute("orologio", orologio);
+		model.addAttribute("elencoCinturiniPosseduti", orologio.getCinturiniPosseduti());
+		return "orologio.html";
 	}
 
 }

@@ -55,10 +55,10 @@ public class Custodia {
 	public void setColore(String colore) {
 		this.colore = colore;
 	}
-	public PuntoVendita getPuntoVendita() {
+	public PuntoVendita getPuntoVenditaCustodie() {
 		return puntoVenditaCustodie;
 	}
-	public void setPuntoVendita(PuntoVendita puntoVendita) {
+	public void setPuntoVenditaCustodie(PuntoVendita puntoVendita) {
 		this.puntoVenditaCustodie = puntoVendita;
 	}
 	

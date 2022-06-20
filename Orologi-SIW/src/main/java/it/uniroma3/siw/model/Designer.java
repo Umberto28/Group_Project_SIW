@@ -51,6 +51,12 @@ public class Designer {
 	public void setNazionalita(String nazionalita) {
 		this.nazionalita = nazionalita;
 	}
+	public List<Orologio> getOrologiCreati() {
+		return orologiCreati;
+	}
+	public void setOrologiCreati(List<Orologio> orologiCreati) {
+		this.orologiCreati = orologiCreati;
+	}
 	
 	
 	

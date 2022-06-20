@@ -1,5 +1,6 @@
 package it.uniroma3.siw.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -29,7 +30,7 @@ public class Orologio {
 	@ManyToOne
 	private Designer designer;
 	
-	@OneToMany
+	@OneToMany(cascade = {CascadeType.ALL}, mappedBy ="orologioConCinturino")
 	private Cinturino cinturino;
 	
 	

@@ -25,8 +25,14 @@ public class PuntoVendita {
 	@NotBlank
 	private String nomeTitolare;
 	
-	@OneToMany(cascade = {CascadeType.ALL}, mappedBy ="puntoVendita")
+	@OneToMany(cascade = {CascadeType.ALL}, mappedBy ="puntoVenditaOrologi")
 	private List<Orologio> orologiInVendita;
+	
+	@OneToMany(cascade = {CascadeType.ALL}, mappedBy ="puntoVenditaCustodie") 
+	private List<Custodia> custodieInVendita;
+	
+	@OneToMany(cascade = {CascadeType.ALL}, mappedBy ="puntoVenditaCinturini") 
+	private List<Cinturino> cinturiniInVendita;
 	
 	
 	public Long getId() {
@@ -53,6 +59,26 @@ public class PuntoVendita {
 	public void setNomeTitolare(String nomeTitolare) {
 		this.nomeTitolare = nomeTitolare;
 	}
+	public List<Orologio> getOrologiInVendita() {
+		return orologiInVendita;
+	}
+	public void setOrologiInVendita(List<Orologio> orologiInVendita) {
+		this.orologiInVendita = orologiInVendita;
+	}
+	public List<Custodia> getCustodieInVendita() {
+		return custodieInVendita;
+	}
+	public void setCustodieInVendita(List<Custodia> custodieInVendita) {
+		this.custodieInVendita = custodieInVendita;
+	}
+	public List<Cinturino> getCinturiniInVendita() {
+		return cinturiniInVendita;
+	}
+	public void setCinturiniInVendita(List<Cinturino> cinturiniInVendita) {
+		this.cinturiniInVendita = cinturiniInVendita;
+	}
+	
+	
 	
 	
 	

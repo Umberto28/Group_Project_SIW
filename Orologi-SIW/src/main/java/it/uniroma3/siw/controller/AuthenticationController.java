@@ -16,12 +16,14 @@ import it.uniroma3.siw.controller.validator.CredentialsValidator;
 import it.uniroma3.siw.controller.validator.UserValidator;
 import it.uniroma3.siw.model.Cinturino;
 import it.uniroma3.siw.model.Credentials;
+import it.uniroma3.siw.model.Custodia;
 import it.uniroma3.siw.model.Designer;
 import it.uniroma3.siw.model.Orologio;
 import it.uniroma3.siw.model.PuntoVendita;
 import it.uniroma3.siw.model.User;
 import it.uniroma3.siw.service.CinturinoService;
 import it.uniroma3.siw.service.CredentialsService;
+import it.uniroma3.siw.service.CustodiaService;
 import it.uniroma3.siw.service.DesignerService;
 import it.uniroma3.siw.service.OrologioService;
 import it.uniroma3.siw.service.PuntoVenditaService;
@@ -46,6 +48,8 @@ public class AuthenticationController {
 	private CinturinoService cs;
 	@Autowired
 	private PuntoVenditaService pvs;
+	@Autowired
+	private CustodiaService cus;
 	
 	
 	
@@ -73,10 +77,12 @@ public class AuthenticationController {
 		List<Designer> elencoDesigner = this.ds.findAllDesigner();
 		List<Orologio> elencoOrologi = this.os.findAllOrologi();
 		List<PuntoVendita> elencoPuntiVendita = this.pvs.findAllPuntiVendita();
+		List<Custodia> elencoCustodie = this.cus.findAllCustodie();
 		model.addAttribute("elencoCinturini", elencoCinturini);
 		model.addAttribute("elencoDesigner", elencoDesigner);
 		model.addAttribute("elencoOrologi", elencoOrologi);
 		model.addAttribute("elencoPuntiVendita", elencoPuntiVendita);
+		model.addAttribute("elencoCustodie", elencoCustodie);
 		return "adminFeatures.html";
 	}
 	

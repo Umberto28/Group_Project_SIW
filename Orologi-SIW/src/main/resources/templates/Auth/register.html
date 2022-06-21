@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" th:href="@{https://fonts.googleapis.com/css?family=Lobster Two}">
+        <link rel="stylesheet" th:href="@{/css/index.css}">
+        <link rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css}" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <title>Registrazione</title>
+    </head>
+    <body>
+        <!-- NAVBAR SECTION -->
+        <header th:replace="fragments/base.html :: navbar"></header>
+
+        <!-- BACKGROUND -->
+        <img class="card-img" th:src="@{https://source.unsplash.com/random/1920x950/?catering}">
+
+        <!-- FORM SECTION -->
+        <div class=" card-img-overlay">
+            <section class="pt-4 pb-4 mt-0 align-items-center d-flex " style="min-height: 100vh; background-size: cover;">
+                <div class="container-fluid">
+                    <div class="row justify-content-center align-items-center d-flex-row text-center h-100">
+                        <div class="col-3 h-50">
+                            <div class="card bg-light shadow">
+                                <div class="card-body mx-3">
+                                    <h4 class="card-title mt-2 text-center">Registrati </h4>
+                                    <form th:action="@{/register}" method="POST">
+                                        <div class="form-outline mb-4">
+                                            <input type="text" id="form3Example1cg" class="form-control" placeholder="Nome" th:field="${user.nome}"/>
+                                            <p class="has-text-left help is-danger" th:if="${#fields.hasErrors('user.nome')}"
+                                            th:errors="${user.nome}">Errore</p>
+                                        </div>
+                                        <div class="form-outline mb-4">
+                                            <input type="text" id="form3Example3cg" class="form-control" placeholder="Cognome" th:field="${user.cognome}"/>
+                                            <p class="has-text-left help is-danger" th:if="${#fields.hasErrors('user.cognome')}"
+                                            th:errors="${user.cognome}">Errore</p>
+                                        </div>
+                                        <div class="form-outline mb-4">
+                                            <input type="text" id="form3Example4cg" class="form-control" placeholder="Username" th:field="${credentials.username}" />
+                                            <p class="has-text-left help is-danger"
+                                            th:if="${#fields.hasErrors('credentials.username')}" th:errors="${credentials.username}">Errore</p>
+                                        </div>
+                                        <div class="form-outline mb-4">
+                                            <input type="password" id="form3Example4cdg" class="form-control" placeholder="Password" th:field="${credentials.password}" />
+                                            <p class="has-text-left help is-danger"
+                                            th:if="${#fields.hasErrors('credentials.password')}" th:errors="${credentials.password}">Errore</p>
+                                        </div>
+                                        <div class="d-flex justify-content-center">
+                                            <button type="submit"
+                                            class="btn btn-block text-body">Registrati</button>
+                                        </div>
+                                        <p class="text-center text-muted mt-4 mb-1">Hai già un account? <a th:href="@{/login}"
+                                        class="fw-bold text-body"><u>Login </u></a></p>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- FOOTER SECTION -->
+        <footer th:replace="fragments/base.html :: footer"></footer>
+        
+    </body>
+</html>

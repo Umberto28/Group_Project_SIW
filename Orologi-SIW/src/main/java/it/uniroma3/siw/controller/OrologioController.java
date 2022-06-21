@@ -69,7 +69,7 @@ public class OrologioController {
 	private String getAllOrologi(Model model) {
 		List<Orologio> elencoOrologi = this.orologioService.findAllOrologi();
 		model.addAttribute("elencoOrologi", elencoOrologi);
-		return "elencoOrologi.html";
+		return "/Orologio/elencoOrologi.html";
 	}
 	
 	@GetMapping("/admin/orologioForm")

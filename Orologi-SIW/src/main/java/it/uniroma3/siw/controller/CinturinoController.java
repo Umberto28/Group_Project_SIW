@@ -97,7 +97,7 @@ public class CinturinoController {
 	@GetMapping("/admin/updateCinturino")
 	private String updateCinturinoForm(@RequestParam Long cinturinoId,Model model) {
 		model.addAttribute("cinturino", this.cinturinoService.searchById(cinturinoId));
-		model.addAttribute("orologiDisponibili",this.orologioService.findAllOrologi());
+		//potremmo voler cambiare il punto vendita del cinturino
 		model.addAttribute("puntiVenditaDisponibili",this.puntoVenditaService.findAllPuntiVendita());
 		return "cinturinoUpdateForm.html";
 	}

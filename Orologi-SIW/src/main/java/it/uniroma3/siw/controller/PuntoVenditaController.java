@@ -56,7 +56,7 @@ public class PuntoVenditaController {
 	@GetMapping("/admin/puntoVenditaForm")
 	private String getPuntoVenditaForm(Model model) {
 		model.addAttribute("puntoVendita", new PuntoVendita());
-		return "puntoVendita.html";
+		return "puntoVenditaForm.html";
 	}
 	
 	@GetMapping("/puntoVendita/{id}")
@@ -73,6 +73,24 @@ public class PuntoVenditaController {
 	private String deletePuntoVendita(@RequestParam Long puntoVenditaId) {
 		this.puntoVenditaService.rimuovi(puntoVenditaId);
 		return "redirect:/elencoStore";
+	}
+	
+	@GetMapping("/admin/updatePuntoVendita")
+	private String updatePuntoVenditaForm(@RequestParam Long puntoVenditaId, Model model) {
+		model.addAttribute("puntoVendita", this.puntoVenditaService.searchById(puntoVenditaId));
+		return "puntoVendita.html";
+	}
+	
+	@GetMapping("/puntoVenditaUpdate/{id}")
+	private String updatePuntoVendita(@Valid @ModelAttribute("puntoVendita") PuntoVendita pv, BindingResult bindingResult, Model model) {
+		this.puntoVenditaValidator.validate(pv, bindingResult);
+		if(!bindingResult.hasErrors()) {
+			this.puntoVenditaService.inserisci(pv);
+			model.addAttribute("puntoVendita", pv);
+			return "puntoVendita.html";
+		} 
+		model.addAttribute("puntoVendita", pv);
+		return "puntoVenditaUpdateForm.html";
 	}
 
 

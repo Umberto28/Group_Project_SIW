@@ -94,4 +94,24 @@ public class OrologioController {
 		return "redirect:/elencoOrologi";
 	}
 
+	@GetMapping("/admin/updateOrologio")
+	private String updateOrologioForm(@RequestParam Long orologioId, Model model) {
+		model.addAttribute("orologio", this.orologioService.searchById(orologioId));
+		//potremmo voler cambiare il punto vendita dell'orologio
+		model.addAttribute("puntiVenditaDisponibili",this.puntoVenditaService.findAllPuntiVendita());
+		return "orologioForm.html";
+	}
+	
+	@GetMapping("/orologioUpdate/{id}")
+	private String updateOrologio(@Valid @ModelAttribute("orologio") Orologio o, BindingResult bindingResult, Model model) {
+		this.orologioValidator.validate(o, bindingResult);
+		if(!bindingResult.hasErrors()) {
+			this.orologioService.inserisci(o);
+			model.addAttribute("orologio", o);
+			model.addAttribute("elencoCinturiniPosseduti", o.getCinturiniPosseduti());
+			return "orologio.html";
+		}
+		model.addAttribute("orologio", o);
+		return "orologio.html";
+	}
 }

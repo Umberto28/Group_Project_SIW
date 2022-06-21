@@ -72,7 +72,7 @@ public class DesignerController {
 		return "redirect:/elencoDesigner";
 	}
 	
-	@GetMapping("/admin/designerForm")
+	@GetMapping("/admin/updateDesigner")
 	private String updateDesignerForm(@RequestParam Long designerId, Model model) {
 		model.addAttribute("designer", this.designerService.searchById(designerId));
 		return "designerUpdateForm.html";
@@ -84,7 +84,6 @@ public class DesignerController {
 		if(!bindingResult.hasErrors()) {
 			this.designerService.inserisci(d);
 			model.addAttribute("designer", d);
-			model.addAttribute("elencoOrologiCreati", d.getOrologiCreati());
 			return "designer.html";
 		}
 		

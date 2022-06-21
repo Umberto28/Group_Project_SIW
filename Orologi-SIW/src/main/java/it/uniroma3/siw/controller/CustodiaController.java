@@ -90,6 +90,7 @@ public class CustodiaController {
 	@GetMapping("/admin/updateCustodia")
 	private String updateCustodiaForm(@RequestParam Long custodiaId, Model model) {
 		model.addAttribute("custodia", this.custodiaService.searchById(custodiaId));
+		//potremmo voler cambiare il punto vendita della custodia
 		model.addAttribute("puntiVenditaDisponibili",this.puntoVenditaService.findAllPuntiVendita());
 		return "custodiaUpdateForm.html";
 	}

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import it.uniroma3.siw.controller.validator.PuntoVenditaValidator;
 import it.uniroma3.siw.model.PuntoVendita;
@@ -47,8 +48,8 @@ public class PuntoVenditaController {
 	
 	@GetMapping("/elencoStore")
 	private String getAllOrologi(Model model) {
-		List<PuntoVendita> elencoPuntivendita = this.puntoVenditaService.findAllPuntiVendita();
-		model.addAttribute("elencoPuntivendita", elencoPuntivendita);
+		List<PuntoVendita> elencoPuntiVendita = this.puntoVenditaService.findAllPuntiVendita();
+		model.addAttribute("elencoPuntiVendita", elencoPuntiVendita);
 		return "elencoPuntiVendita.html";
 	}
 	
@@ -67,5 +68,12 @@ public class PuntoVenditaController {
 		model.addAttribute("elencoCustodieInVendita", puntoVendita.getCustodieInVendita());
 		return "orologio.html";
 	}
+	
+	@GetMapping("/deletePuntoVendita")
+	private String deletePuntoVendita(@RequestParam Long puntoVenditaId) {
+		this.puntoVenditaService.rimuovi(puntoVenditaId);
+		return "redirect:/elencoStore";
+	}
+
 
 }

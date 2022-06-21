@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import it.uniroma3.siw.controller.validator.DesignerValidator;
 import it.uniroma3.siw.model.Designer;
@@ -63,6 +64,12 @@ public class DesignerController {
 		model.addAttribute("designer", designer);
 		model.addAttribute("elencoOrologiCreati", designer.getOrologiCreati());
 		return "designer.html";
+	}
+	
+	@GetMapping("/deleteDesigner")
+	private String deleteDesigner(@RequestParam Long designerId) {
+		this.designerService.rimuovi(designerId);
+		return "redirect:/elencoDesigner";
 	}
 
 }

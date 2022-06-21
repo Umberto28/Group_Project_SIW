@@ -88,5 +88,12 @@ public class CinturinoController {
 		return "cinturino.html";
 	}
 	
+	@GetMapping("/deleteCinturino")
+	private String deleteCinturino(@RequestParam Long cinturinoId) {
+		this.cinturinoService.rimuovi(cinturinoId);
+		return "redirect:/elencoCinturini";
+	}
+	
+	
 	
 }

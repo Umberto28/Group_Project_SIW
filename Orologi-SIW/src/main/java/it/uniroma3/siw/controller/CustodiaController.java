@@ -80,5 +80,11 @@ public class CustodiaController {
 		model.addAttribute("custodia", custodia);
 		return "custodia.html";
 	}
+	
+	@GetMapping("/deleteCustodia")
+	private String deleteCustodia(@RequestParam Long custodiaId) {
+		this.custodiaService.rimuovi(custodiaId);
+		return "redirect:/elencoCustodie";
+	}
 
 }

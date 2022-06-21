@@ -87,5 +87,11 @@ public class OrologioController {
 		model.addAttribute("elencoCinturiniPosseduti", orologio.getCinturiniPosseduti());
 		return "orologio.html";
 	}
+	
+	@GetMapping("/deleteOrologio")
+	private String deleteOrologio(@RequestParam Long orologioId) {
+		this.orologioService.rimuovi(orologioId);
+		return "redirect:/elencoOrologi";
+	}
 
 }

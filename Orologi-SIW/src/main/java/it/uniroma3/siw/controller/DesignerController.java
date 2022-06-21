@@ -71,5 +71,25 @@ public class DesignerController {
 		this.designerService.rimuovi(designerId);
 		return "redirect:/elencoDesigner";
 	}
+	
+	@GetMapping("/admin/designerForm")
+	private String updateDesignerForm(@RequestParam Long designerId, Model model) {
+		model.addAttribute("designer", this.designerService.searchById(designerId));
+		return "designerUpdateForm.html";
+	}
+	
+	@GetMapping("/designerUpdate/{id}")
+	private String updateDesigner(@Valid @ModelAttribute("designer") Designer d, BindingResult bindingResult, Model model) {
+		this.designerValidator.validate(d, bindingResult);
+		if(!bindingResult.hasErrors()) {
+			this.designerService.inserisci(d);
+			model.addAttribute("designer", d);
+			model.addAttribute("elencoOrologiCreati", d.getOrologiCreati());
+			return "designer.html";
+		}
+		
+		model.addAttribute("designer", d);
+		return "designerUpdateForm.html";
+	}
 
 }

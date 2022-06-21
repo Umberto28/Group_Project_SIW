@@ -86,5 +86,24 @@ public class CustodiaController {
 		this.custodiaService.rimuovi(custodiaId);
 		return "redirect:/elencoCustodie";
 	}
+	
+	@GetMapping("/admin/updateCustodia")
+	private String updateCustodiaForm(@RequestParam Long custodiaId, Model model) {
+		model.addAttribute("custodia", this.custodiaService.searchById(custodiaId));
+		model.addAttribute("puntiVenditaDisponibili",this.puntoVenditaService.findAllPuntiVendita());
+		return "custodiaUpdateForm.html";
+	}
+	
+	@GetMapping("/custodiaUpdate/{id}")
+	private String updateCustodia(@Valid @ModelAttribute("custodia") Custodia c, BindingResult bindingResult, Model model) {
+		this.custodiaValidator.validate(c, bindingResult);
+		if(!bindingResult.hasErrors()) {
+			this.custodiaService.inserisci(c);
+			model.addAttribute("custodia", c);
+			return "custodia.html";
+		}
+		model.addAttribute("custodia", c);
+		return "custodiaUpdateForm.html";
+	}
 
 }

@@ -21,6 +21,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
  * The AuthConfiguration is a Spring Security Configuration.
  * It extends WebSecurityConfigurerAdapter, meaning that it provides the settings for Web security.
  */
+
 @Configuration
 @EnableWebSecurity
 public class AuthConfiguration extends WebSecurityConfigurerAdapter {

@@ -94,6 +94,27 @@ public class CinturinoController {
 		return "redirect:/elencoCinturini";
 	}
 	
+	@GetMapping("/admin/updateCinturino")
+	private String updateCinturinoForm(@RequestParam Long cinturinoId,Model model) {
+		model.addAttribute("cinturino", this.cinturinoService.searchById(cinturinoId));
+		model.addAttribute("orologiDisponibili",this.orologioService.findAllOrologi());
+		model.addAttribute("puntiVenditaDisponibili",this.puntoVenditaService.findAllPuntiVendita());
+		return "cinturinoUpdateForm.html";
+	}
+	
+	
+	@GetMapping("/cinturinoUpdate/{id}")
+	private String updateCinturino(@Valid @ModelAttribute("cinturino") Cinturino c, BindingResult bindingResult, Model model) {
+		this.cinturinoValidator.validate(c, bindingResult);
+		if(!bindingResult.hasErrors()) {
+			this.cinturinoService.inserisci(c);
+			model.addAttribute("cinturino", c);
+			return "cinturino.html";
+		}
+		model.addAttribute("cinturino", c);
+		return "cinturinoUpdateForm.html";
+	}
+	
 	
 	
 }

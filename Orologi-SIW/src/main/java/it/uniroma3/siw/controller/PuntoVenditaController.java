@@ -38,11 +38,11 @@ public class PuntoVenditaController {
 			model.addAttribute("elencoCinturiniInVendita", pv.getCinturiniInVendita());
 			model.addAttribute("elencoCustodieInVendita", pv.getCustodieInVendita());
 			model.addAttribute("puntoVendita", pv);
-			return "puntoVendita.html";
+			return "/PuntoVendita/puntoVendita.html";
 
 		} 
 		model.addAttribute("puntoVendita", pv);
-		return "puntoVenditaForm.html";
+		return "/PuntoVendita/puntoVenditaForm.html";
 		
 	}
 	
@@ -50,13 +50,13 @@ public class PuntoVenditaController {
 	private String getAllOrologi(Model model) {
 		List<PuntoVendita> elencoPuntiVendita = this.puntoVenditaService.findAllPuntiVendita();
 		model.addAttribute("elencoPuntiVendita", elencoPuntiVendita);
-		return "elencoPuntiVendita.html";
+		return "/PuntoVendita/elencoPuntiVendita.html";
 	}
 	
 	@GetMapping("/admin/puntoVenditaForm")
 	private String getPuntoVenditaForm(Model model) {
 		model.addAttribute("puntoVendita", new PuntoVendita());
-		return "puntoVenditaForm.html";
+		return "/PuntoVendita/puntoVenditaForm.html";
 	}
 	
 	@GetMapping("/puntoVendita/{id}")
@@ -66,7 +66,7 @@ public class PuntoVenditaController {
 		model.addAttribute("elencoCinturiniInVendita", puntoVendita.getCinturiniInVendita());
 		model.addAttribute("elencoOrologiInVendita", puntoVendita.getOrologiInVendita());
 		model.addAttribute("elencoCustodieInVendita", puntoVendita.getCustodieInVendita());
-		return "orologio.html";
+		return "/PuntoVendita/orologio.html";
 	}
 	
 	@GetMapping("/deletePuntoVendita")
@@ -78,7 +78,7 @@ public class PuntoVenditaController {
 	@GetMapping("/admin/updatePuntoVendita")
 	private String updatePuntoVenditaForm(@RequestParam Long puntoVenditaId, Model model) {
 		model.addAttribute("puntoVendita", this.puntoVenditaService.searchById(puntoVenditaId));
-		return "puntoVendita.html";
+		return "/PuntoVendita/puntoVendita.html";
 	}
 	
 	@GetMapping("/puntoVenditaUpdate/{id}")
@@ -87,10 +87,10 @@ public class PuntoVenditaController {
 		if(!bindingResult.hasErrors()) {
 			this.puntoVenditaService.inserisci(pv);
 			model.addAttribute("puntoVendita", pv);
-			return "puntoVendita.html";
+			return "/PuntoVendita/puntoVendita.html";
 		} 
 		model.addAttribute("puntoVendita", pv);
-		return "puntoVenditaUpdateForm.html";
+		return "/PuntoVendita/puntoVenditaUpdateForm.html";
 	}
 
 

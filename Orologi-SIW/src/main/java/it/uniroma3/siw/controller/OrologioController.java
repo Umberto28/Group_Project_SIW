@@ -57,11 +57,11 @@ public class OrologioController {
 			this.puntoVenditaService.inserisci(pv);
 			
 			model.addAttribute("orologio", o);
-			return "orologio.html";
+			return "/Orologio/orologio.html";
 
 		} 
 		model.addAttribute("orologio", o);
-		return "orologioForm.html";
+		return "/Orologio/orologioForm.html";
 		
 	}
 	
@@ -77,7 +77,7 @@ public class OrologioController {
 		model.addAttribute("orologio", new Orologio());
 		model.addAttribute("designerDisponibili",this.designerService.findAllDesigner());
 		model.addAttribute("puntiVenditaDisponibili",this.puntoVenditaService.findAllPuntiVendita());
-		return "orologioForm.html";
+		return "/Orologio/orologioForm.html";
 	}
 	
 	@GetMapping("/orologio/{id}")
@@ -85,7 +85,7 @@ public class OrologioController {
 		Orologio orologio =this.orologioService.searchById(id);
 		model.addAttribute("orologio", orologio);
 		model.addAttribute("elencoCinturiniPosseduti", orologio.getCinturiniPosseduti());
-		return "orologio.html";
+		return "/Orologio/orologio.html";
 	}
 	
 	@GetMapping("/deleteOrologio")
@@ -99,7 +99,7 @@ public class OrologioController {
 		model.addAttribute("orologio", this.orologioService.searchById(orologioId));
 		//potremmo voler cambiare il punto vendita dell'orologio
 		model.addAttribute("puntiVenditaDisponibili",this.puntoVenditaService.findAllPuntiVendita());
-		return "orologioForm.html";
+		return "/Orologio/orologioForm.html";
 	}
 	
 	@GetMapping("/orologioUpdate/{id}")
@@ -109,9 +109,9 @@ public class OrologioController {
 			this.orologioService.inserisci(o);
 			model.addAttribute("orologio", o);
 			model.addAttribute("elencoCinturiniPosseduti", o.getCinturiniPosseduti());
-			return "orologio.html";
+			return "/Orologio/orologio.html";
 		}
 		model.addAttribute("orologio", o);
-		return "orologio.html";
+		return "/Orologio/orologioUpdateForm.html";
 	}
 }

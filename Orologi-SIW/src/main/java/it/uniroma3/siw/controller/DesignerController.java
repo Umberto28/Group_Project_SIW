@@ -37,11 +37,11 @@ public class DesignerController {
 			
 			model.addAttribute("elencoOrologi", d.getOrologiCreati());
 			model.addAttribute("designer", d);
-			return "designer.html";
+			return "/Designer/designer.html";
 
 		} 
 		model.addAttribute("designer", d);
-		return "designerForm.html";
+		return "/Designer/designerForm.html";
 		
 	}
 	
@@ -49,13 +49,13 @@ public class DesignerController {
 	private String getAllDesigner(Model model) {
 		List<Designer> elencoDesigner = this.designerService.findAllDesigner();
 		model.addAttribute("elencoDesigner", elencoDesigner);
-		return "elencoDesigner.html";
+		return "/Designer/elencoDesigner.html";
 	}
 	
 	@GetMapping("/admin/designerForm")
 	private String getDesignerForm(Model model) {
 		model.addAttribute("designer", new Designer());
-		return "designerForm.html";
+		return "/Designer/designerForm.html";
 	}
 	
 	@GetMapping("/designer/{id}")
@@ -63,7 +63,7 @@ public class DesignerController {
 		Designer designer =this.designerService.searchById(id);
 		model.addAttribute("designer", designer);
 		model.addAttribute("elencoOrologiCreati", designer.getOrologiCreati());
-		return "designer.html";
+		return "/Designer/designer.html";
 	}
 	
 	@GetMapping("/deleteDesigner")
@@ -75,7 +75,7 @@ public class DesignerController {
 	@GetMapping("/admin/updateDesigner")
 	private String updateDesignerForm(@RequestParam Long designerId, Model model) {
 		model.addAttribute("designer", this.designerService.searchById(designerId));
-		return "designerUpdateForm.html";
+		return "/Designer/designerUpdateForm.html";
 	}
 	
 	@GetMapping("/designerUpdate/{id}")
@@ -84,11 +84,11 @@ public class DesignerController {
 		if(!bindingResult.hasErrors()) {
 			this.designerService.inserisci(d);
 			model.addAttribute("designer", d);
-			return "designer.html";
+			return "/Designer/designer.html";
 		}
 		
 		model.addAttribute("designer", d);
-		return "designerUpdateForm.html";
+		return "/Designer/designerUpdateForm.html";
 	}
 
 }

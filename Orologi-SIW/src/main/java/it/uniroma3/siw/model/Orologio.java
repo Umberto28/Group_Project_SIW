@@ -33,7 +33,6 @@ public class Orologio {
 	private Designer designer;
 	
 	@OneToMany(cascade = {CascadeType.ALL}, mappedBy ="orologioConCinturino")
-	
 	private List<Cinturino> cinturiniPosseduti;	
 	
 	public Long getId() {

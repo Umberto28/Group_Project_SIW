@@ -1,10 +1,13 @@
 package it.uniroma3.siw.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Custodia {
@@ -24,6 +27,9 @@ public class Custodia {
 	
 	@ManyToOne
 	private PuntoVendita puntoVenditaCustodie;
+	
+	@OneToMany
+	private List<Orologio> orologiAdattiAllaCustodia;
 
 	public Long getId() {
 		return Id;

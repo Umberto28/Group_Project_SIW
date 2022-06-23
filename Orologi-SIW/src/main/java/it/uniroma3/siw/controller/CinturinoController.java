@@ -57,7 +57,7 @@ public class CinturinoController {
 			this.orologioService.inserisci(o);
 			
 			model.addAttribute("cinturino", c);
-			return "cinturino.html";
+			return "/Cinturino/cinturino.html";
 
 		} 
 		model.addAttribute("cinturino", c);

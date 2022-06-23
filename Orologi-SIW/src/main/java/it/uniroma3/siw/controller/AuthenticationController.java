@@ -61,7 +61,7 @@ public class AuthenticationController {
 	
 	@GetMapping("/login") 
 	public String showLoginForm (Model model) {
-		return "login.html";
+		return "/Auth/login.html";
 	}
 	
 	
@@ -115,6 +115,6 @@ public class AuthenticationController {
             credentialsService.saveCredentials(credentials);
             return "/Auth/registrationSuccessful.html";
         }
-        return "login.html";
+        return "/Auth/login.html";
     }
 }

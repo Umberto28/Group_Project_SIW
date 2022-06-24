@@ -33,6 +33,6 @@
 }
 
 .carousel-caption {
-    transform: translateX(-30%);
+    transform: translateX(-10%);
     bottom: initial;
 }

@@ -37,14 +37,14 @@ public class OrologioController {
 	@PostMapping("/admin/orologio")
 	public String addOrologio(@Valid @ModelAttribute("orologio") Orologio o, 
 			BindingResult bindingResult, 
-			@RequestParam(name = "designerScelto") Long Did,
-			@RequestParam(name = "puntoVenditaScelto") Long PVid, Model model) {
+			/* @RequestParam(name = "designerScelto") Long Did,
+			@RequestParam(name = "puntoVenditaScelto") Long PVid,*/ Model model) {
 		
 		this.orologioValidator.validate(o, bindingResult);
 		
 		if (!bindingResult.hasErrors()) {
 			
-			Designer d = this.designerService.searchById(Did);
+			/* Designer d = this.designerService.searchById(Did);
 			PuntoVendita pv = this.puntoVenditaService.searchById(PVid);
 			
 			o.setDesigner(d);
@@ -54,7 +54,8 @@ public class OrologioController {
 			pv.getOrologiInVendita().add(o);
 			
 			this.designerService.inserisci(d);
-			this.puntoVenditaService.inserisci(pv);
+			this.puntoVenditaService.inserisci(pv);*/
+			this.orologioService.inserisci(o);
 			
 			model.addAttribute("orologio", o);
 			return "/Orologio/orologio.html";

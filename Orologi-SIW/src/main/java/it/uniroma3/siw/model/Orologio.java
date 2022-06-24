@@ -20,9 +20,9 @@ public class Orologio {
 	
 	@NotBlank
 	private String nome;
-	@NotBlank
-	private int prezzo;
-	@NotBlank
+	
+	private float prezzo;
+	
 	private String descrizione;
 	
 	
@@ -48,10 +48,10 @@ public class Orologio {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public int getPrezzo() {
+	public float getPrezzo() {
 		return prezzo;
 	}
-	public void setPrezzo(int prezzo) {
+	public void setPrezzo(float prezzo) {
 		this.prezzo = prezzo;
 	}
 	public String getDescrizione() {

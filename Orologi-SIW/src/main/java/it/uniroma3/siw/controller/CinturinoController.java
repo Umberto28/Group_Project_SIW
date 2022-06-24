@@ -61,7 +61,7 @@ public class CinturinoController {
 
 		} 
 		model.addAttribute("cinturino", c);
-		return "cinturinoForm.html";
+		return "/Cinturino/cinturinoForm.html";
 		
 	}
 	
@@ -69,7 +69,7 @@ public class CinturinoController {
 	private String getAllCinturini(Model model) {
 		List<Cinturino> elencoCinturini = this.cinturinoService.findAllCinturini();
 		model.addAttribute("elencoCinturini", elencoCinturini);
-		return "elencoCinturini.html";
+		return "/Cinturino/elencoCinturini.html";
 	}
 	
 	@GetMapping("/admin/cinturinoForm")
@@ -77,7 +77,7 @@ public class CinturinoController {
 		model.addAttribute("cinturino", new Cinturino());
 		model.addAttribute("orologiDisponibili",this.orologioService.findAllOrologi());
 		model.addAttribute("puntiVenditaDisponibili",this.puntoVenditaService.findAllPuntiVendita());
-		return "cinturinoForm.html";
+		return "/Cinturino/cinturinoForm.html";
 	}
 	
 	
@@ -85,8 +85,36 @@ public class CinturinoController {
 	private String getCinturino(@PathVariable("id") Long id, Model model) {
 		Cinturino cinturino =this.cinturinoService.searchById(id);
 		model.addAttribute("cinturino", cinturino);
-		return "cinturino.html";
+		return "/Cinturino/cinturino.html";
 	}
+	
+	@GetMapping("/deleteCinturino")
+	private String deleteCinturino(@RequestParam Long cinturinoId) {
+		this.cinturinoService.rimuovi(cinturinoId);
+		return "redirect:/elencoCinturini";
+	}
+	
+	@GetMapping("/admin/updateCinturino")
+	private String updateCinturinoForm(@RequestParam Long cinturinoId,Model model) {
+		model.addAttribute("cinturino", this.cinturinoService.searchById(cinturinoId));
+		//potremmo voler cambiare il punto vendita del cinturino
+		model.addAttribute("puntiVenditaDisponibili",this.puntoVenditaService.findAllPuntiVendita());
+		return "/Cinturino/cinturinoUpdateForm.html";
+	}
+	
+	
+	@GetMapping("/cinturinoUpdate/{id}")
+	private String updateCinturino(@Valid @ModelAttribute("cinturino") Cinturino c, BindingResult bindingResult, Model model) {
+		this.cinturinoValidator.validate(c, bindingResult);
+		if(!bindingResult.hasErrors()) {
+			this.cinturinoService.inserisci(c);
+			model.addAttribute("cinturino", c);
+			return "/Cinturino/cinturino.html";
+		}
+		model.addAttribute("cinturino", c);
+		return "/Cinturino/cinturinoUpdateForm.html";
+	}
+	
 	
 	
 }

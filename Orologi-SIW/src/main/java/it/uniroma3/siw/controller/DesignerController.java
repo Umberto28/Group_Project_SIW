@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import it.uniroma3.siw.controller.validator.DesignerValidator;
 import it.uniroma3.siw.model.Designer;
@@ -36,11 +37,11 @@ public class DesignerController {
 			
 			model.addAttribute("elencoOrologi", d.getOrologiCreati());
 			model.addAttribute("designer", d);
-			return "designer.html";
+			return "/Designer/designer.html";
 
 		} 
 		model.addAttribute("designer", d);
-		return "designerForm.html";
+		return "/Designer/designerForm.html";
 		
 	}
 	
@@ -48,13 +49,13 @@ public class DesignerController {
 	private String getAllDesigner(Model model) {
 		List<Designer> elencoDesigner = this.designerService.findAllDesigner();
 		model.addAttribute("elencoDesigner", elencoDesigner);
-		return "elencoDesigner.html";
+		return "/Designer/elencoDesigner.html";
 	}
 	
 	@GetMapping("/admin/designerForm")
 	private String getDesignerForm(Model model) {
 		model.addAttribute("designer", new Designer());
-		return "designerForm.html";
+		return "/Designer/designerForm.html";
 	}
 	
 	@GetMapping("/designer/{id}")
@@ -62,7 +63,32 @@ public class DesignerController {
 		Designer designer =this.designerService.searchById(id);
 		model.addAttribute("designer", designer);
 		model.addAttribute("elencoOrologiCreati", designer.getOrologiCreati());
-		return "designer.html";
+		return "/Designer/designer.html";
+	}
+	
+	@GetMapping("/deleteDesigner")
+	private String deleteDesigner(@RequestParam Long designerId) {
+		this.designerService.rimuovi(designerId);
+		return "redirect:/elencoDesigner";
+	}
+	
+	@GetMapping("/admin/updateDesigner")
+	private String updateDesignerForm(@RequestParam Long designerId, Model model) {
+		model.addAttribute("designer", this.designerService.searchById(designerId));
+		return "/Designer/designerUpdateForm.html";
+	}
+	
+	@GetMapping("/designerUpdate/{id}")
+	private String updateDesigner(@Valid @ModelAttribute("designer") Designer d, BindingResult bindingResult, Model model) {
+		this.designerValidator.validate(d, bindingResult);
+		if(!bindingResult.hasErrors()) {
+			this.designerService.inserisci(d);
+			model.addAttribute("designer", d);
+			return "/Designer/designer.html";
+		}
+		
+		model.addAttribute("designer", d);
+		return "/Designer/designerUpdateForm.html";
 	}
 
 }

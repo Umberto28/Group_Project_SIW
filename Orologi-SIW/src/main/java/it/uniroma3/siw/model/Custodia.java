@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class Custodia {
@@ -18,12 +19,14 @@ public class Custodia {
 	private Long Id;
 	
 	private String nome;
-	
+	@NotBlank
 	private String materiale;
-	
+	@NotBlank
 	private int numeroOrologi;
-	
+	@NotBlank
 	private String colore;
+	
+	private float prezzo;
 	
 	@ManyToOne
 	private PuntoVendita puntoVenditaCustodie;
@@ -66,6 +69,18 @@ public class Custodia {
 	}
 	public void setPuntoVenditaCustodie(PuntoVendita puntoVendita) {
 		this.puntoVenditaCustodie = puntoVendita;
+	}
+	public float getPrezzo() {
+		return prezzo;
+	}
+	public void setPrezzo(float prezzo) {
+		this.prezzo = prezzo;
+	}
+	public List<Orologio> getOrologiAdattiAllaCustodia() {
+		return orologiAdattiAllaCustodia;
+	}
+	public void setOrologiAdattiAllaCustodia(List<Orologio> orologiAdattiAllaCustodia) {
+		this.orologiAdattiAllaCustodia = orologiAdattiAllaCustodia;
 	}
 	
 	

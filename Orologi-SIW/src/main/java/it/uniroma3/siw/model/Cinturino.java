@@ -18,8 +18,8 @@ public class Cinturino {
 	private String colore;
 	@NotBlank
 	private int misura;
-	@NotBlank
-	private int prezzo;
+	
+	private float prezzo;
 	
 	@ManyToOne
 	private Orologio orologioConCinturino;
@@ -45,10 +45,10 @@ public class Cinturino {
 	public void setMisura(int misura) {
 		this.misura = misura;
 	}
-	public int getPrezzo() {
+	public float getPrezzo() {
 		return prezzo;
 	}
-	public void setPrezzo(int prezzo) {
+	public void setPrezzo(float prezzo) {
 		this.prezzo = prezzo;
 	}
 	public Orologio getOrologio() {

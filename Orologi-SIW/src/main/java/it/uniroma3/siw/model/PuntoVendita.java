@@ -18,11 +18,11 @@ public class PuntoVendita {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long Id;
 	
-	@NotBlank
+	
 	private String nome;
 	@NotBlank
 	private String indirizzo;
-	@NotBlank
+	
 	private String nomeTitolare;
 	
 	@OneToMany(cascade = {CascadeType.ALL}, mappedBy ="puntoVenditaOrologi")

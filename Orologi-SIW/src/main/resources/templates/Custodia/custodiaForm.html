@@ -45,13 +45,17 @@
                                                         <span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
                                                     </div>
                                                 </div>
+
                                                 <div class="col-md-6">
+
                                                     <div class="form-group">
                                                         <label for="form_name">Prezzo</label>
                                                         <input id="form_name" type="number" name="name" class="form-control" placeholder="Inserisci il prezzo della custodia" required="required" th:field="*{prezzo}" >
                                                         <span th:if="${#fields.hasErrors('prezzo')}" th:errors="*{prezzo}"></span>
                                                     </div>
+
                                                 </div>
+
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="message">Materiale</label>
@@ -74,7 +78,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            
+
                                             <div class="col-12 mt-3">
                                                 <div class="form-group">
                                                     <label for="form_name">Seleziona Store</label>
@@ -88,7 +92,9 @@
                                                         <div class="notification p-3 is-danger">Nessuno store disponibile!</div>
                                                     </div>
                                                 </div>
+
                                             </div> 
+
                                             <div class="row mt-4">
                                                 <div class="col-md-12">
                                                     <button type="submit" class="btn btn-dark btn-send pt-2 btn-block text-white"><img th:src="@{/images/confermaIcon.png}" alt="Conferma"></button>

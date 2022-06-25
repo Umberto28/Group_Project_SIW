@@ -16,7 +16,7 @@ public class Cinturino {
 	
 	@NotBlank
 	private String colore;
-	@NotBlank
+	
 	private int misura;
 	
 	private float prezzo;
@@ -64,8 +64,4 @@ public class Cinturino {
 		this.puntoVenditaCinturini = puntoVenditaCinturini;
 	}
 	
-	
-	
-	
-
 }

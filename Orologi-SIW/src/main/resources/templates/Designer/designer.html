@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" th:href="@{/css/index.css}">
+        <link th:href='@{https://fonts.googleapis.com/css?family=Sirin Stencil}' rel='stylesheet'>
+        <link rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css}" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+        <title>Watches Roma Tre</title>
+    </head>
+    <body>
+        <!-- NAVBAR SECTION -->
+        <header th:replace="fragments/base.html :: navbar"></header>
+
+        <!-- TITLE SECTION -->
+        <div class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img th:src="@{/images/designSection.jpg}" class="d-block" height="350" width="1920" alt="home image" style="object-fit: cover;">
+                </div>
+            </div>
+        </div>
+
+        <!-- FORM SECTION -->
+        <div class="p-5 m-5">
+            <div class="mb-5">
+                <span class="textFont section-title text-white text-center bgColorD rounded-pill shadow py-2 px-3">- Dettagli designer -</span>
+            </div>
+            <hr class="bgColorD">
+            <div class="d-flex justify-content-center">
+                <div class="col-8 bg-light d-flex justify-content-between shadow m-5 p-5" style="border: 2px solid #a69926;border-radius: 10px;" th:object="${designer}">
+                    <div class="textColorD d-inline">
+                        <h2 class="textFont">Nome: </h2><h4 class="mb-5" th:text="*{nome}">designer</h4>
+                        <h2 class="textFont">Cognome: </h2><h4 class="mb-5" th:text="*{cognome}">designer</h4>
+                        <h2 class="textFont">Nazionalità: </h2><h4 th:text="*{nazionalita}">designer</h4>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+        <!-- FOOTER SECTION -->
+        <footer th:replace="fragments/base.html :: footer"></footer>
+
+    </body>
+</html>

@@ -1,7 +1,5 @@
 package it.uniroma3.siw.controller;
 
-import java.util.List;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,17 +31,22 @@ public class CustodiaController {
 	@PostMapping("/admin/custodia")
 	public String addCustodia(@Valid @ModelAttribute("custodia") Custodia c,
 			BindingResult bindingResult,
+
 			@RequestParam(name = "puntoVenditaScelto") Long PVid, Model model) {
+
 
 		this.custodiaValidator.validate(c, bindingResult);
 
 		if (!bindingResult.hasErrors()) {
 
+
 			PuntoVendita pv = this.puntoVenditaService.searchById(PVid);
+
 
 			c.setPuntoVenditaCustodie(pv);
 
 			pv.getCustodieInVendita().add(c);
+
 
 			this.puntoVenditaService.inserisci(pv);
 
@@ -58,6 +61,7 @@ public class CustodiaController {
 
 	}
 
+
 	@GetMapping("/elencoCustodie")
 	private String getAllCustodie(Model model) {
 		List<Custodia> elencoCustodie = this.custodiaService.findAllCustodie();
@@ -69,6 +73,7 @@ public class CustodiaController {
 	private String getCustodiaForm(Model model) {
 		model.addAttribute("custodia", new Custodia());
 		model.addAttribute("puntiVenditaDisponibili", this.puntoVenditaService.findAllPuntiVendita());
+
 		return "/Custodia/custodiaForm.html";
 	}
 

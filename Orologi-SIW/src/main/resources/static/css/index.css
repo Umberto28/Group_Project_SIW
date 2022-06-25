@@ -2,6 +2,50 @@
     color: #26A69A;
 }
 
+.textColorO{
+    color: #3c8c84;
+}
+
+.textColorD{
+    color: #a69926;
+}
+
+.textColorCi{
+    color: #2633a6;
+}
+
+.textColorCu{
+    color: #a62633;
+}
+
+.textColorP{
+    color: #9926a6;
+}
+
+.bgColor {
+    background-color: #26A69A;
+}
+
+.bgColorO {
+    background-color: #3c8c84;
+}
+
+.bgColorD {
+    background-color: #a69926;
+}
+
+.bgColorCi {
+    background-color: #2633a6;
+}
+
+.bgColorCu {
+    background-color: #a62633;
+}
+
+.bgColorP {
+    background-color: #9926a6;
+}
+
 .textFont {
     font-family: 'Sirin Stencil';
 }
@@ -20,19 +64,20 @@
     object-fit: cover;
 }
 
-.bgColor {
-    background-color: #26A69A;
-}
-
 .btn:hover {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.card-obj:hover {
+.card-obj {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.card-obj:hover {
+    transform: scale(1.1);
+    transition: all .5s;
+}
+
 .carousel-caption {
-    transform: translateX(-30%);
+    transform: translateX(-10%);
     bottom: initial;
 }

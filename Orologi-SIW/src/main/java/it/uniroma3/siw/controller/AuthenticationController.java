@@ -52,12 +52,11 @@ public class AuthenticationController {
 	private CustodiaService cus;
 	
 	
-	
 	@GetMapping("/register") 
 	public String showRegisterForm(Model model) {
 		model.addAttribute("user", new User());
 		model.addAttribute("credentials", new Credentials());
-		return "register.html";
+		return "/Auth/register.html";
 	}
 	
 	@GetMapping("/login") 
@@ -109,12 +108,12 @@ public class AuthenticationController {
         this.credentialsValidator.validate(credentials, credentialsBindingResult);
 
         // if neither of them had invalid contents, store the User and the Credentials into the DB
-        if(!userBindingResult.hasErrors() && ! credentialsBindingResult.hasErrors()) {
+        if(!userBindingResult.hasErrors() && !credentialsBindingResult.hasErrors()) {
             // set the user and store the credentials;
             // this also stores the User, thanks to Cascade.ALL policy
             credentials.setUser(user);
             credentialsService.saveCredentials(credentials);
-            return "registrationSuccessful.html";
+            return "/Auth/registrationSuccessful.html";
         }
         return "/Auth/login.html";
     }

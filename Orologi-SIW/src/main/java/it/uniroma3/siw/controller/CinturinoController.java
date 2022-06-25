@@ -16,9 +16,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import it.uniroma3.siw.controller.validator.CinturinoValidator;
 import it.uniroma3.siw.model.Cinturino;
+import it.uniroma3.siw.model.Custodia;
 import it.uniroma3.siw.model.Orologio;
 import it.uniroma3.siw.model.PuntoVendita;
 import it.uniroma3.siw.service.CinturinoService;
+import it.uniroma3.siw.service.CustodiaService;
 import it.uniroma3.siw.service.OrologioService;
 import it.uniroma3.siw.service.PuntoVenditaService;
 
@@ -33,18 +35,20 @@ public class CinturinoController {
 	OrologioService orologioService;
 	@Autowired
 	PuntoVenditaService puntoVenditaService;
+	@Autowired
+	CustodiaService custodiaService;
 
 	@PostMapping("/admin/cinturino")
 	public String addCinturino(@Valid @ModelAttribute("cinturino") Cinturino c,
 			BindingResult bindingResult,
 			@RequestParam(name = "orologioScelto") Long Oid,
 			@RequestParam(name = "puntoVenditaScelto") Long PVid, Model model) {
-
 		this.cinturinoValidator.validate(c, bindingResult);
 
 		if (!bindingResult.hasErrors()) {
 
 			Orologio o = this.orologioService.searchById(Oid);
+
 			PuntoVendita pv = this.puntoVenditaService.searchById(PVid);
 
 			c.setOrologio(o);
@@ -58,19 +62,22 @@ public class CinturinoController {
 			this.cinturinoService.inserisci(c);
 
 			model.addAttribute("cinturino", c);
-			return "cinturino.html";
+			return "/Cinturino/cinturino.html";
 
 		}
 		model.addAttribute("cinturino", c);
 		return "/Cinturino/cinturinoForm.html";
 
 	}
+	
+	@GetMapping("/elencoAccessori")
 
-	@GetMapping("/elencoCinturini")
 	private String getAllCinturini(Model model) {
 		List<Cinturino> elencoCinturini = this.cinturinoService.findAllCinturini();
 		model.addAttribute("elencoCinturini", elencoCinturini);
-		return "/Cinturino/elencoCinturini.html";
+		List<Custodia> elencoCustodie = this.custodiaService.findAllCustodie();
+		model.addAttribute("elencoCustodie", elencoCustodie);
+		return "/Cinturino/elencoAccessori.html";
 	}
 
 	@GetMapping("/admin/cinturinoForm")

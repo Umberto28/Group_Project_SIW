@@ -24,7 +24,7 @@ import it.uniroma3.siw.service.PuntoVenditaService;
 
 @Controller
 public class OrologioController {
-	
+
 	@Autowired
 	OrologioService orologioService;
 	@Autowired
@@ -33,61 +33,62 @@ public class OrologioController {
 	DesignerService designerService;
 	@Autowired
 	PuntoVenditaService puntoVenditaService;
-	
+
 	@PostMapping("/admin/orologio")
-	public String addOrologio(@Valid @ModelAttribute("orologio") Orologio o, 
-			BindingResult bindingResult, 
+	public String addOrologio(@Valid @ModelAttribute("orologio") Orologio o,
+			BindingResult bindingResult,
 			@RequestParam(name = "designerScelto") Long Did,
 			@RequestParam(name = "puntoVenditaScelto") Long PVid, Model model) {
-		
+
 		this.orologioValidator.validate(o, bindingResult);
-		
+
 		if (!bindingResult.hasErrors()) {
-			
+
 			Designer d = this.designerService.searchById(Did);
 			PuntoVendita pv = this.puntoVenditaService.searchById(PVid);
-			
+
 			o.setDesigner(d);
 			o.setPuntoVenditaOrologi(pv);
-			
+
 			d.getOrologiCreati().add(o);
 			pv.getOrologiInVendita().add(o);
-			
+
 			this.designerService.inserisci(d);
 			this.puntoVenditaService.inserisci(pv);
-			
+			this.orologioService.inserisci(o);
+
 			model.addAttribute("orologio", o);
 			return "/Orologio/orologio.html";
 
-		} 
+		}
 		model.addAttribute("orologio", o);
 		return "/Orologio/orologioForm.html";
-		
+
 	}
-	
+
 	@GetMapping("/elencoOrologi")
 	private String getAllOrologi(Model model) {
 		List<Orologio> elencoOrologi = this.orologioService.findAllOrologi();
 		model.addAttribute("elencoOrologi", elencoOrologi);
 		return "elencoOrologi.html";
 	}
-	
+
 	@GetMapping("/admin/orologioForm")
 	private String getOrologioForm(Model model) {
 		model.addAttribute("orologio", new Orologio());
-		model.addAttribute("designerDisponibili",this.designerService.findAllDesigner());
-		model.addAttribute("puntiVenditaDisponibili",this.puntoVenditaService.findAllPuntiVendita());
+		model.addAttribute("designerDisponibili", this.designerService.findAllDesigner());
+		model.addAttribute("puntiVenditaDisponibili", this.puntoVenditaService.findAllPuntiVendita());
 		return "/Orologio/orologioForm.html";
 	}
-	
+
 	@GetMapping("/orologio/{id}")
 	private String getOrologio(@PathVariable("id") Long id, Model model) {
-		Orologio orologio =this.orologioService.searchById(id);
+		Orologio orologio = this.orologioService.searchById(id);
 		model.addAttribute("orologio", orologio);
 		model.addAttribute("elencoCinturiniPosseduti", orologio.getCinturiniPosseduti());
 		return "/Orologio/orologio.html";
 	}
-	
+
 	@GetMapping("/deleteOrologio")
 	private String deleteOrologio(@RequestParam Long orologioId) {
 		this.orologioService.rimuovi(orologioId);
@@ -97,15 +98,16 @@ public class OrologioController {
 	@GetMapping("/admin/updateOrologio")
 	private String updateOrologioForm(@RequestParam Long orologioId, Model model) {
 		model.addAttribute("orologio", this.orologioService.searchById(orologioId));
-		//potremmo voler cambiare il punto vendita dell'orologio
-		model.addAttribute("puntiVenditaDisponibili",this.puntoVenditaService.findAllPuntiVendita());
+		// potremmo voler cambiare il punto vendita dell'orologio
+		model.addAttribute("puntiVenditaDisponibili", this.puntoVenditaService.findAllPuntiVendita());
 		return "/Orologio/orologioForm.html";
 	}
-	
+
 	@GetMapping("/orologioUpdate/{id}")
-	private String updateOrologio(@Valid @ModelAttribute("orologio") Orologio o, BindingResult bindingResult, Model model) {
+	private String updateOrologio(@Valid @ModelAttribute("orologio") Orologio o, BindingResult bindingResult,
+			Model model) {
 		this.orologioValidator.validate(o, bindingResult);
-		if(!bindingResult.hasErrors()) {
+		if (!bindingResult.hasErrors()) {
 			this.orologioService.inserisci(o);
 			model.addAttribute("orologio", o);
 			model.addAttribute("elencoCinturiniPosseduti", o.getCinturiniPosseduti());

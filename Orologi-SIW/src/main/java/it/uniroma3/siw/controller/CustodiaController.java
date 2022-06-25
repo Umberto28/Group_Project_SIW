@@ -1,7 +1,5 @@
 package it.uniroma3.siw.controller;
 
-import java.util.List;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,17 +58,10 @@ public class CustodiaController {
 		
 	}
 	
-	@GetMapping("/elencoCustodie")
-	private String getAllCustodie(Model model) {
-		List<Custodia> elencoCustodie = this.custodiaService.findAllCustodie();
-		model.addAttribute("elencoCustodie", elencoCustodie);
-		return "/Custodia/elencoCustodie.html";
-	}
-	
 	@GetMapping("/admin/custodiaForm")
 	private String getCustodiaForm(Model model) {
 		model.addAttribute("custodia", new Custodia());
-		model.addAttribute("puntiVenditaDisponibili",this.puntoVenditaService.findAllPuntiVendita());
+		//model.addAttribute("puntiVenditaDisponibili",this.puntoVenditaService.findAllPuntiVendita());
 		return "/Custodia/custodiaForm.html";
 	}
 	

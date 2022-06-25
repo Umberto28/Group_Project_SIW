@@ -2,6 +2,42 @@
     color: #26A69A;
 }
 
+.textColorO{
+    color: #3c8c84;
+}
+
+.textColorD{
+    color: #a69926;
+}
+
+.textColorCi{
+    color: #2633a6;
+}
+
+.textColorCu{
+    color: #a62633;
+}
+
+.bgColor {
+    background-color: #26A69A;
+}
+
+.bgColorO {
+    background-color: #3c8c84;
+}
+
+.bgColorD {
+    background-color: #a69926;
+}
+
+.bgColorCi {
+    background-color: #2633a6;
+}
+
+.bgColorCu {
+    background-color: #a62633;
+}
+
 .textFont {
     font-family: 'Sirin Stencil';
 }
@@ -18,10 +54,6 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-}
-
-.bgColor {
-    background-color: #26A69A;
 }
 
 .btn:hover {

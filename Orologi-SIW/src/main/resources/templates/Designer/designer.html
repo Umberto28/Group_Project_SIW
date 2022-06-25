@@ -20,25 +20,19 @@
             </div>
         </div>
 
-        <!-- WATCH SECTION -->
+        <!-- FORM SECTION -->
         <div class="p-5 m-5">
-            <div class="d-flex justify-content-between align-items-center mb-5">
-                <span class="textFont section-title text-white text-center bgColorO rounded-pill shadow py-2 px-3">- Elenco orologi -</span>
-                <a th:href="@{/admin/orologioForm}" class="rounded-circle bgColorO p-2"><img th:src="@{/images/addIcon.png}" alt="Add"></a>
+            <div class="mb-5">
+                <span class="textFont section-title text-white text-center bgColor rounded-pill shadow py-2 px-3">- Dettagli designer -</span>
             </div>
-            <hr class="bgColorO">
-            <div class="d-flex flex-wrap align-items-center ml-5 pl-5">
-                <div th:each="orologio : ${elencoOrologi}">
-                    <div class="card card-obj m-4" style="width: 30rem;background-color: #3c8c84;">
-                        <div class="card-body d-flex justify-content-between align-items-center p-4">
-                            <img th:src="@{/images/watchIcon5.png}" alt="Watch Icon" class="bg-light rounded">
-                            <div class="col-7 text-right text-white textFont">
-                                <h4 th:text="${orologio.nome}">orologio</h4>
-                                <h5 th:text="${orologio.descrizione}">descrizione</h5>
-                            </div>
-                        </div>
-                    </div>
+            <hr class="bgColor">
+            <div class="bg-light d-flex justify-content-between shadow m-5 p-5" style="border: 2px solid #a69926;border-radius: 10px;" th:object="${designer}">
+                <div class="textColorD d-inline">
+                    <h2 class="textFont">Nome: </h2><h4 class="mb-5" th:text="*{nome}">designer</h4>
+                    <h2 class="textFont">Cognome: </h2><h4 class="mb-5" th:text="*{cognome}">designer</h4>
+                    <h2 class="textFont">Nazionalità: </h2><h4 th:text="*{nazionalita}">designer</h4>
                 </div>
+                
             </div>
         </div>
 

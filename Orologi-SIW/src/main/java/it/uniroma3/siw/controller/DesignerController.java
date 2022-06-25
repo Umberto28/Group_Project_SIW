@@ -34,6 +34,7 @@ public class DesignerController {
 		this.designerValidator.validate(d, bindingResult);
 		
 		if (!bindingResult.hasErrors()) {
+			this.designerService.inserisci(d);
 			
 			model.addAttribute("elencoOrologi", d.getOrologiCreati());
 			model.addAttribute("designer", d);

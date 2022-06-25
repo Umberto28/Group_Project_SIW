@@ -16,9 +16,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import it.uniroma3.siw.controller.validator.CinturinoValidator;
 import it.uniroma3.siw.model.Cinturino;
+import it.uniroma3.siw.model.Custodia;
 import it.uniroma3.siw.model.Orologio;
 import it.uniroma3.siw.model.PuntoVendita;
 import it.uniroma3.siw.service.CinturinoService;
+import it.uniroma3.siw.service.CustodiaService;
 import it.uniroma3.siw.service.OrologioService;
 import it.uniroma3.siw.service.PuntoVenditaService;
 
@@ -33,6 +35,9 @@ public class CinturinoController {
 	OrologioService orologioService;
 	@Autowired
 	PuntoVenditaService puntoVenditaService;
+	
+	@Autowired
+	CustodiaService custodiaService;
 	
 	@PostMapping("/admin/cinturino")
 	public String addCinturino(@Valid @ModelAttribute("cinturino") Cinturino c, 
@@ -65,11 +70,13 @@ public class CinturinoController {
 		
 	}
 	
-	@GetMapping("/elencoCinturini")
+	@GetMapping("/elencoAccessori")
 	private String getAllCinturini(Model model) {
 		List<Cinturino> elencoCinturini = this.cinturinoService.findAllCinturini();
 		model.addAttribute("elencoCinturini", elencoCinturini);
-		return "/Cinturino/elencoCinturini.html";
+		List<Custodia> elencoCustodie = this.custodiaService.findAllCustodie();
+		model.addAttribute("elencoCustodie", elencoCustodie);
+		return "/Cinturino/elencoAccessori.html";
 	}
 	
 	@GetMapping("/admin/cinturinoForm")

@@ -16,9 +16,9 @@ public class Cinturino {
 	
 	@NotBlank
 	private String colore;
-	@NotBlank
+	
 	private int misura;
-	@NotBlank
+	
 	private int prezzo;
 	
 	@ManyToOne

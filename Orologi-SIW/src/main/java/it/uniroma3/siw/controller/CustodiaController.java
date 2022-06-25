@@ -31,14 +31,14 @@ public class CustodiaController {
 	@PostMapping("/admin/custodia")
 	public String addCustodia(@Valid @ModelAttribute("custodia") Custodia c, 
 			BindingResult bindingResult,
-			@RequestParam(name = "puntoVenditaScelto") Long PVid, Model model) {
+			/*@RequestParam(name = "puntoVenditaScelto") Long PVid,*/ Model model) {
 		
 		this.custodiaValidator.validate(c, bindingResult);
 		
 		if (!bindingResult.hasErrors()) {
 			
 			
-			PuntoVendita pv = this.puntoVenditaService.searchById(PVid);
+			/*PuntoVendita pv = this.puntoVenditaService.searchById(PVid);
 			
 			
 			c.setPuntoVenditaCustodie(pv);
@@ -46,8 +46,8 @@ public class CustodiaController {
 			
 			pv.getCustodieInVendita().add(c);
 			
-			this.puntoVenditaService.inserisci(pv);
-			
+			this.puntoVenditaService.inserisci(pv);*/
+			this.custodiaService.inserisci(c);			
 			
 			model.addAttribute("custodia", c);
 			return "/Custodia/custodia.html";

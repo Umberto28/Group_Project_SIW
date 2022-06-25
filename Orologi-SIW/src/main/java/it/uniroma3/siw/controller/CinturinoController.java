@@ -42,14 +42,14 @@ public class CinturinoController {
 	@PostMapping("/admin/cinturino")
 	public String addCinturino(@Valid @ModelAttribute("cinturino") Cinturino c, 
 			BindingResult bindingResult, 
-			@RequestParam(name = "orologioScelto") Long Oid,
-			@RequestParam(name = "puntoVenditaScelto") Long PVid, Model model) {
+			/*@RequestParam(name = "orologioScelto") Long Oid,
+			@RequestParam(name = "puntoVenditaScelto") Long PVid,*/ Model model) {
 		
 		this.cinturinoValidator.validate(c, bindingResult);
 		
 		if (!bindingResult.hasErrors()) {
 			
-			Orologio o = this.orologioService.searchById(Oid);
+			/*Orologio o = this.orologioService.searchById(Oid);
 			PuntoVendita pv = this.puntoVenditaService.searchById(PVid);
 			
 			c.setOrologio(o);
@@ -59,7 +59,8 @@ public class CinturinoController {
 			pv.getCinturiniInVendita().add(c);
 			
 			this.puntoVenditaService.inserisci(pv);
-			this.orologioService.inserisci(o);
+			this.orologioService.inserisci(o);*/
+			this.cinturinoService.inserisci(c);
 			
 			model.addAttribute("cinturino", c);
 			return "/Cinturino/cinturino.html";

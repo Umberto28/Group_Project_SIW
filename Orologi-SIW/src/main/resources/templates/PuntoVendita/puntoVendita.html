@@ -15,7 +15,7 @@
         <div class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img th:src="@{/images/sfondoIndex5.jpg}" class="d-block" height="350" width="1920" alt="home image" style="object-fit: cover;">
+                    <img th:src="@{/images/store.jpg}" class="d-block" height="350" width="1920" alt="home image" style="object-fit: cover;">
                 </div>
             </div>
         </div>
@@ -23,22 +23,22 @@
         <!-- FORM SECTION -->
         <div class="p-5 m-5">
             <div class="mb-5">
-                <span class="textFont section-title text-white text-center bgColorO rounded-pill shadow py-2 px-3">- Dettagli orologio -</span>
+                <span class="textFont section-title text-white text-center bgColorP rounded-pill shadow py-2 px-3">- Dettagli store -</span>
             </div>
-            <hr class="bgColorO">
+            <hr class="bgColorP">
             <div class="d-flex justify-content-center">
-                <div class="col-8 bg-light d-flex justify-content-between shadow m-5 p-5" style="border: 2px solid #3c8c84;border-radius: 10px;" th:object="${orologio}">
-                    <div class="textColorO d-inline">
+                <div class="col-8 bg-light d-flex justify-content-between shadow m-5 p-5" style="border: 2px solid #9926a6;border-radius: 10px;" th:object="${puntoVendita}">
+                    <div class="textColorP d-inline">
                         <h2 class="textFont">Nome: </h2><h4 class="mb-5" th:text="*{nome}">orologio</h4>
-                        <h2 class="textFont">Prezzo: </h2><h4 class="mb-5" th:text="*{prezzo}">orologio</h4>
-                        <h2 class="textFont">Descrizione: </h2><h4 th:text="*{descrizione}">orologio</h4>
+                        <h2 class="textFont">Indirizzo: </h2><h4 class="mb-5" th:text="*{indirizzo}">orologio</h4>
+                        <h2 class="textFont">Nome Titolare: </h2><h4 th:text="*{nomeTitolare}">orologio</h4>
                     </div>
-                    <div class="textColorO d-inline mr-5">
-                        <h2 class="textFont">Designer: </h2><h4 class="mb-5" th:if="${designer}" th:text="${designer.nome} + ${designer.cognome}">orologio</h4>
-                        <h4 class="mb-5" th:unless="${designer}">Nessun Designer assegnato</h4>
+                    <div class="textColorP d-inline mr-5">
+                        <h2 class="textFont">Orologi: </h2><h4 class="mb-5" th:if="${orologio}" th:text="${orologio.nome}">orologio</h4>
+                        <h4 class="mb-5" th:unless="${designer}">Nessun orologio assegnato</h4>
 
-                        <h2 class="textFont">Store: </h2><h4 class="mb-5" th:if="${puntoVendita}" th:text="${puntoVendita.nome}">orologio</h4>
-                        <h4 class="mb-5" th:unless="${puntoVendita}">Nessuno Store assegnato</h4>
+                        <h2 class="textFont">Accessori: </h2><h4 class="mb-5" th:if="${cinturino}" th:text="${cinturino.nome}">orologio</h4>
+                        <h4 class="mb-5" th:unless="${cinturino}">Nessun accessorio assegnato</h4>
                     </div>
                 </div>
             </div>

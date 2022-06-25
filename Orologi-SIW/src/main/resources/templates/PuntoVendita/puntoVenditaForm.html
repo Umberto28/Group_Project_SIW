@@ -15,7 +15,7 @@
         <div class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img th:src="@{/images/accessori5.jpg}" class="d-block" height="350" width="1920" alt="home image" style="object-fit: cover;">
+                    <img th:src="@{/images/store.jpg}" class="d-block" height="350" width="1920" alt="home image" style="object-fit: cover;">
                 </div>
             </div>
         </div>
@@ -23,16 +23,16 @@
         <!-- FORM SECTION -->
         <div class="p-5 m-5">
             <div class="mb-5">
-                <span class="textFont section-title text-white text-center bgColorCi rounded-pill shadow py-2 px-3">- Inserisci cinturino -</span>
+                <span class="textFont section-title text-white text-center bgColorP rounded-pill shadow py-2 px-3">- Inserisci store -</span>
             </div>
-            <hr class="bgColorCi">
+            <hr class="bgColorP">
             <div class="m-4">
                 <div class="row">
                     <div class="col-lg-8 mx-auto">
-                        <div class="card shadow text-white mt-2 mx-auto p-4" style="background-color: #2633a6;">
+                        <div class="card shadow text-white mt-2 mx-auto p-4" style="background-color: #9926a6;">
                             <div class="card-body">
                                 <div class = "container">
-                                    <form id="contact-form" role="form" th:action="@{/admin/cinturino}" method="POST" th:object="${cinturino}">
+                                    <form id="contact-form" role="form" th:action="@{/admin/puntoVendita}" method="POST" th:object="${puntoVendita}">
                                         <div th:if="${#fields.hasGlobalErrors()}">
                                             <p th:each="err : ${#fields.globalErrors()}" th:text="${err}">Errore Globale</p>
                                         </div>
@@ -40,37 +40,37 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="form_name">Colore</label>
-                                                        <input id="form_name" type="text" name="name" class="form-control" placeholder="Inserisci il colore del cinturino" required="required" th:field="*{colore}">
-                                                        <span th:if="${#fields.hasErrors('colore')}" th:errors="*{colore}"></span>
+                                                        <label for="form_name">Nome</label>
+                                                        <input id="form_name" type="text" name="name" class="form-control" placeholder="Inserisci il nome dello store" required="required" th:field="*{nome}" >
+                                                        <span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="form_name">Prezzo</label>
-                                                        <input id="form_name" type="number" name="name" class="form-control" placeholder="Inserisci il prezzo del cinturino" required="required" th:field="*{prezzo}" >
-                                                        <span th:if="${#fields.hasErrors('prezzo')}" th:errors="*{prezzo}"></span>
+                                                        <label for="form_name">Indirizzo</label>
+                                                        <input id="form_name" type="text" name="name" class="form-control" placeholder="Inserisci l'indirizzo dello store" required="required" th:field="*{indirizzo}" >
+                                                        <span th:if="${#fields.hasErrors('indirizzo')}" th:errors="*{indirizzo}"></span>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="message">Misura</label>
-                                                        <input id="form_name" type="number" name="name" class="form-control" placeholder="Inserisci la misura del cinturino" required="required" th:field="*{misura}">
-                                                        <span th:if="${#fields.hasErrors('misura')}" th:errors="*{misura}"></span>
+                                                        <label for="message">Nome titolare</label>
+                                                        <input id="form_name" type="text" name="name" class="form-control" placeholder="Inserisci il nome del titolare" required="required" th:field="*{nomeTitolare}">
+                                                        <span th:if="${#fields.hasErrors('nomeTitolare')}" th:errors="*{nomeTitolare}"></span>
                                                     </div>
                                                 </div>
                                             </div>
                                             <!--<div class="col-12 mt-3">
                                                 <div class="form-group">
                                                     <label for="form_name">Seleziona Designer</label>
-                                                    <div th:if="${!orologiDisponibili.empty}">
-                                                        <select name="orologioScelto" class="form-control" aria-label="Default select example">
-                                                            <option th:each="orologio : ${orologiDisponibili}" th:value="${orologio.id}"><span
-                                                                    th:text="${orologio.nome}">Nome orologio</span></option>
+                                                    <div th:if="${!designerDisponibili.empty}">
+                                                        <select name="designerScelto" class="form-control" aria-label="Default select example">
+                                                            <option th:each="designer : ${designerDisponibili}" th:value="${designer.id}"><span
+                                                                    th:text="${designer.nome}">Nome designer</span></option>
                                                         </select>
                                                     </div>
-                                                    <div th:unless="${!orologiDisponibili.empty}">
-                                                        <div class="notification p-3 is-danger">Nessun orologio disponibile!</div>
+                                                    <div th:unless="${!designerDisponibili.empty}">
+                                                        <div class="notification p-3 is-danger">Nessun designer disponibile!</div>
                                                     </div>
                                                 </div>
                                             </div>

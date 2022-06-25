@@ -33,10 +33,11 @@ public class PuntoVenditaController {
 		this.puntoVenditaValidator.validate(pv, bindingResult);
 		
 		if (!bindingResult.hasErrors()) {
+			this.puntoVenditaService.inserisci(pv);
 			
-			model.addAttribute("elencoOrologiInVendita", pv.getOrologiInVendita());
+			/*model.addAttribute("elencoOrologiInVendita", pv.getOrologiInVendita());
 			model.addAttribute("elencoCinturiniInVendita", pv.getCinturiniInVendita());
-			model.addAttribute("elencoCustodieInVendita", pv.getCustodieInVendita());
+			model.addAttribute("elencoCustodieInVendita", pv.getCustodieInVendita());*/
 			model.addAttribute("puntoVendita", pv);
 			return "/PuntoVendita/puntoVendita.html";
 
@@ -66,7 +67,7 @@ public class PuntoVenditaController {
 		model.addAttribute("elencoCinturiniInVendita", puntoVendita.getCinturiniInVendita());
 		model.addAttribute("elencoOrologiInVendita", puntoVendita.getOrologiInVendita());
 		model.addAttribute("elencoCustodieInVendita", puntoVendita.getCustodieInVendita());
-		return "/PuntoVendita/orologio.html";
+		return "/PuntoVendita/puntoVendita.html";
 	}
 	
 	@GetMapping("/deletePuntoVendita")

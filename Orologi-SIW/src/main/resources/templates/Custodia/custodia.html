@@ -23,17 +23,18 @@
         <!-- FORM SECTION -->
         <div class="p-5 m-5">
             <div class="mb-5">
-                <span class="textFont section-title text-white text-center bgColorCi rounded-pill shadow py-2 px-3">- Dettagli cinturino -</span>
+                <span class="textFont section-title text-white text-center bgColorCu rounded-pill shadow py-2 px-3">- Dettagli cinturino -</span>
             </div>
-            <hr class="bgColorCi">
+            <hr class="bgColorCu">
             <div class="d-flex justify-content-center">
-                <div class="col-8 bg-light d-flex justify-content-between shadow m-5 p-5" style="border: 2px solid #2633a6;border-radius: 10px;" th:object="${cinturino}">
-                    <div class="textColorCi d-inline">
+                <div class="col-8 bg-light d-flex justify-content-between shadow m-5 p-5" style="border: 2px solid #a62633;border-radius: 10px;" th:object="${custodia}">
+                    <div class="textColorCu d-inline">
+                        <h2 class="textFont">Nome: </h2><h4 class="mb-5" th:text="*{nome}">orologio</h4>
+                        <h2 class="textFont">Materiale: </h2><h4 class="mb-5" th:text="*{materiale}">orologio</h4>
                         <h2 class="textFont">Colore: </h2><h4 class="mb-5" th:text="*{colore}">orologio</h4>
-                        <h2 class="textFont">Prezzo: </h2><h4 class="mb-5" th:text="*{prezzo}">orologio</h4>
-                        <h2 class="textFont">Misura: </h2><h4 th:text="*{misura}">orologio</h4>
+                        <h2 class="textFont">N. orologi: </h2><h4 th:text="*{numeroOrologi}">orologio</h4>
                     </div>
-                    <div class="textColorCi d-inline mr-5">
+                    <div class="textColorCu d-inline mr-5">
                         <h2 class="textFont">Designer: </h2><h4 class="mb-5" th:if="${orologio}" th:text="${orologio.nome}">orologio</h4>
                         <h4 class="mb-5" th:unless="${orologio}">Nessun Orologio assegnato</h4>
 

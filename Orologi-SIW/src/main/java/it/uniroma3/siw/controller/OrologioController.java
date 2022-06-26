@@ -97,7 +97,7 @@ public class OrologioController {
 	@GetMapping("/deleteOrologio")
 	private String deleteOrologio(@RequestParam Long orologioId) {
 		this.orologioService.rimuovi(orologioId);
-		return "redirect:/elencoOrologi.html";
+		return "redirect:/elencoOrologi";
 	}
 
 	@GetMapping("/admin/updateOrologio")
@@ -108,11 +108,33 @@ public class OrologioController {
 		return "/Orologio/orologioUpdateForm.html";
 	}
 
-	@GetMapping("/orologioUpdate/{id}")
-	private String updateOrologio(@Valid @ModelAttribute("orologio") Orologio o, BindingResult bindingResult,
+	@PostMapping("admin/orologioUpdate/{id}")
+	private String updateOrologio(@Valid @ModelAttribute("orologio") Orologio o, 
+			@RequestParam(name = "puntoVenditaScelto") Long PVid,
+			BindingResult bindingResult,
 			Model model) {
+		
 		this.orologioValidator.validate(o, bindingResult);
 		if (!bindingResult.hasErrors()) {
+			PuntoVendita PVNuovo = this.puntoVenditaService.searchById(PVid);
+			PuntoVendita PVVecchio = o.getPuntoVenditaOrologi();
+			
+			
+				for(Orologio oInList : PVVecchio.getOrologiInVendita()) {
+					if(oInList.getId() == o.getId()) {
+						PVVecchio.getOrologiInVendita().remove(oInList);
+					}
+				}
+				
+	
+			
+			
+			
+			
+		
+			o.setPuntoVenditaOrologi(PVNuovo);
+			PVNuovo.getOrologiInVendita().add(o);
+			this.puntoVenditaService.inserisci(PVNuovo);
 			this.orologioService.inserisci(o);
 			model.addAttribute("orologio", o);
 			model.addAttribute("elencoCinturiniPosseduti", o.getCinturiniPosseduti());

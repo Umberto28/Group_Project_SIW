@@ -108,7 +108,7 @@ public class CinturinoController {
 		return "/Cinturino/cinturinoUpdateForm.html";
 	}
 
-	@GetMapping("/cinturinoUpdate/{id}")
+	@PostMapping("/cinturinoUpdate/{id}")
 	private String updateCinturino(@Valid @ModelAttribute("cinturino") Cinturino c, BindingResult bindingResult,
 			Model model) {
 		this.cinturinoValidator.validate(c, bindingResult);

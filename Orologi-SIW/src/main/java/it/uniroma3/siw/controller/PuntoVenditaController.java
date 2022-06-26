@@ -81,7 +81,7 @@ public class PuntoVenditaController {
 		return "/PuntoVendita/puntoVendita.html";
 	}
 
-	@GetMapping("/puntoVenditaUpdate/{id}")
+	@PostMapping("/puntoVenditaUpdate/{id}")
 	private String updatePuntoVendita(@Valid @ModelAttribute("puntoVendita") PuntoVendita pv,
 			BindingResult bindingResult, Model model) {
 		this.puntoVenditaValidator.validate(pv, bindingResult);

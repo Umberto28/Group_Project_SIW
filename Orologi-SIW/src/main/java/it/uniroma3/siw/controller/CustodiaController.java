@@ -99,7 +99,7 @@ public class CustodiaController {
 		return "/Custodia/custodiaUpdateForm.html";
 	}
 
-	@GetMapping("/custodiaUpdate/{id}")
+	@PostMapping("/custodiaUpdate/{id}")
 	private String updateCustodia(@Valid @ModelAttribute("custodia") Custodia c, BindingResult bindingResult,
 			Model model) {
 		this.custodiaValidator.validate(c, bindingResult);

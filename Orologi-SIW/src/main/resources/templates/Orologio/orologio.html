@@ -34,11 +34,11 @@
                         <h2 class="textFont">Descrizione: </h2><h4 th:text="*{descrizione}">orologio</h4>
                     </div>
                     <div class="textColorO d-inline mr-5">
-                        <h2 class="textFont">Designer: </h2><h4 class="mb-5" th:if="${designer}" th:text="${designer.nome} + ${designer.cognome}">orologio</h4>
-                        <h4 class="mb-5" th:unless="${designer}">Nessun Designer assegnato</h4>
+                        <h2 class="textFont">Designer: </h2><h4 class="mb-5" th:if="${orologio.designer}" th:object="${orologio.designer}" th:text="*{nome} + *{cognome}">orologio</h4>
+                        <h4 class="mb-5" th:unless="${orologio.designer}">Nessun Designer assegnato</h4>
 
-                        <h2 class="textFont">Store: </h2><h4 class="mb-5" th:if="${puntoVendita}" th:text="${puntoVendita.nome}">orologio</h4>
-                        <h4 class="mb-5" th:unless="${puntoVendita}">Nessuno Store assegnato</h4>
+                        <h2 class="textFont">Store: </h2><h4 class="mb-5" th:if="${orologio.puntoVenditaOrologi}" th:object="${orologio.puntoVenditaOrologi}" th:text="*{nome}">orologio</h4>
+                        <h4 class="mb-5" th:unless="${orologio.puntoVenditaOrologi}">Nessuno Store assegnato</h4>
                     </div>
                 </div>
             </div>

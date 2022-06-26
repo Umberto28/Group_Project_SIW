@@ -48,14 +48,14 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="form_name">Prezzo</label>
-                                                        <input id="form_name" type="number" name="name" class="form-control" placeholder="Inserisci il prezzo del cinturino" required="required" th:field="*{prezzo}" >
+                                                        <input id="form_name" type="number"  min="0" oninput="validity.valid||(value='');" name="name" class="form-control" placeholder="Inserisci il prezzo del cinturino" required="required" th:field="*{prezzo}" >
                                                         <span th:if="${#fields.hasErrors('prezzo')}" th:errors="*{prezzo}"></span>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="message">Misura</label>
-                                                        <input id="form_name" type="number" name="name" class="form-control" placeholder="Inserisci la misura del cinturino" required="required" th:field="*{misura}">
+                                                        <input id="form_name" type="number"  min="0" oninput="validity.valid||(value='');" name="name" class="form-control" placeholder="Inserisci la misura del cinturino" required="required" th:field="*{misura}">
                                                         <span th:if="${#fields.hasErrors('misura')}" th:errors="*{misura}"></span>
                                                     </div>
                                                 </div>
@@ -64,7 +64,7 @@
                                             <div class="col-12 mt-3">
 
                                                 <div class="form-group">
-                                                    <label for="form_name">Seleziona Designer</label>
+                                                    <label for="form_name">Seleziona Orologio</label>
                                                     <div th:if="${!orologiDisponibili.empty}">
                                                         <select name="orologioScelto" class="form-control" aria-label="Default select example">
                                                             <option th:each="orologio : ${orologiDisponibili}" th:value="${orologio.id}"><span

@@ -48,7 +48,7 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="form_name">Prezzo</label>
-                                                        <input id="form_name" type="number" name="name" class="form-control" placeholder="Inserisci il prezzo dell'orologio" required="required" th:field="*{prezzo}" >
+                                                        <input id="form_name" type="number"  min="0" oninput="validity.valid||(value='');" name="name" class="form-control" placeholder="Inserisci il prezzo dell'orologio" required="required" th:field="*{prezzo}" >
                                                         <span th:if="${#fields.hasErrors('prezzo')}" th:errors="*{prezzo}"></span>
                                                     </div>
                                                 </div>

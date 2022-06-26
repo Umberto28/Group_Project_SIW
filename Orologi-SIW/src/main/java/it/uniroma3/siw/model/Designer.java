@@ -2,7 +2,6 @@ package it.uniroma3.siw.model;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,7 +23,7 @@ public class Designer {
 	@NotBlank
 	private String nazionalita;
 	
-	@OneToMany(cascade = {CascadeType.ALL}, mappedBy ="designer")
+	@OneToMany(mappedBy ="designer")
 	private List<Orologio> orologiCreati;
 	
 	public Long getId() {

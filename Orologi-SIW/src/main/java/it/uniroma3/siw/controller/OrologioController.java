@@ -60,7 +60,6 @@ public class OrologioController {
 			this.designerService.inserisci(d);
 
 			this.puntoVenditaService.inserisci(pv);
-			this.orologioService.inserisci(o);
 
 
 			model.addAttribute("orologio", o);

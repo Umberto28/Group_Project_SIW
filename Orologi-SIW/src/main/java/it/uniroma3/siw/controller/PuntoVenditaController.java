@@ -20,79 +20,78 @@ import it.uniroma3.siw.service.PuntoVenditaService;
 
 @Controller
 public class PuntoVenditaController {
-	
+
 	@Autowired
 	PuntoVenditaService puntoVenditaService;
 	@Autowired
 	PuntoVenditaValidator puntoVenditaValidator;
-	
+
 	@PostMapping("/admin/puntoVendita")
-	public String addDesigner(@Valid @ModelAttribute("puntoVendita") PuntoVendita pv, 
+	public String addDesigner(@Valid @ModelAttribute("puntoVendita") PuntoVendita pv,
 			BindingResult bindingResult, Model model) {
-		
+
 		this.puntoVenditaValidator.validate(pv, bindingResult);
-		
+
 		if (!bindingResult.hasErrors()) {
 			this.puntoVenditaService.inserisci(pv);
-			
-			/*model.addAttribute("elencoOrologiInVendita", pv.getOrologiInVendita());
+			model.addAttribute("elencoOrologiInVendita", pv.getOrologiInVendita());
 			model.addAttribute("elencoCinturiniInVendita", pv.getCinturiniInVendita());
-			model.addAttribute("elencoCustodieInVendita", pv.getCustodieInVendita());*/
+			model.addAttribute("elencoCustodieInVendita", pv.getCustodieInVendita());
 			model.addAttribute("puntoVendita", pv);
 			return "/PuntoVendita/puntoVendita.html";
 
-		} 
+		}
 		model.addAttribute("puntoVendita", pv);
 		return "/PuntoVendita/puntoVenditaForm.html";
-		
+
 	}
-	
+
 	@GetMapping("/elencoStore")
 	private String getAllOrologi(Model model) {
 		List<PuntoVendita> elencoPuntiVendita = this.puntoVenditaService.findAllPuntiVendita();
 		model.addAttribute("elencoPuntiVendita", elencoPuntiVendita);
 		return "/PuntoVendita/elencoPuntiVendita.html";
 	}
-	
+
 	@GetMapping("/admin/puntoVenditaForm")
 	private String getPuntoVenditaForm(Model model) {
 		model.addAttribute("puntoVendita", new PuntoVendita());
 		return "/PuntoVendita/puntoVenditaForm.html";
 	}
-	
+
 	@GetMapping("/puntoVendita/{id}")
 	private String getPuntoVendita(@PathVariable("id") Long id, Model model) {
-		PuntoVendita puntoVendita =this.puntoVenditaService.searchById(id);
+		PuntoVendita puntoVendita = this.puntoVenditaService.searchById(id);
 		model.addAttribute("puntoVendita", puntoVendita);
 		model.addAttribute("elencoCinturiniInVendita", puntoVendita.getCinturiniInVendita());
 		model.addAttribute("elencoOrologiInVendita", puntoVendita.getOrologiInVendita());
 		model.addAttribute("elencoCustodieInVendita", puntoVendita.getCustodieInVendita());
 		return "/PuntoVendita/puntoVendita.html";
 	}
-	
+
 	@GetMapping("/deletePuntoVendita")
 	private String deletePuntoVendita(@RequestParam Long puntoVenditaId) {
 		this.puntoVenditaService.rimuovi(puntoVenditaId);
 		return "redirect:/elencoStore";
 	}
-	
+
 	@GetMapping("/admin/updatePuntoVendita")
 	private String updatePuntoVenditaForm(@RequestParam Long puntoVenditaId, Model model) {
 		model.addAttribute("puntoVendita", this.puntoVenditaService.searchById(puntoVenditaId));
 		return "/PuntoVendita/puntoVendita.html";
 	}
-	
+
 	@GetMapping("/puntoVenditaUpdate/{id}")
-	private String updatePuntoVendita(@Valid @ModelAttribute("puntoVendita") PuntoVendita pv, BindingResult bindingResult, Model model) {
+	private String updatePuntoVendita(@Valid @ModelAttribute("puntoVendita") PuntoVendita pv,
+			BindingResult bindingResult, Model model) {
 		this.puntoVenditaValidator.validate(pv, bindingResult);
-		if(!bindingResult.hasErrors()) {
+		if (!bindingResult.hasErrors()) {
 			this.puntoVenditaService.inserisci(pv);
 			model.addAttribute("puntoVendita", pv);
 			return "/PuntoVendita/puntoVendita.html";
-		} 
+		}
 		model.addAttribute("puntoVendita", pv);
 		return "/PuntoVendita/puntoVenditaUpdateForm.html";
 	}
-
 
 }

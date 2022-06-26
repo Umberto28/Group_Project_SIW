@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 
 @Entity
@@ -21,15 +23,20 @@ public class Custodia {
 	private String nome;
 	@NotBlank
 	private String materiale;
-	@NotBlank
+	
+	@Min(0)
+	@Max(12)
 	private int numeroOrologi;
+	
 	@NotBlank
 	private String colore;
 	
+	@Min(0)
+	@Max(999)
 	private float prezzo;
 	
 	@ManyToOne
-	private PuntoVendita puntoVenditaCustodie;
+	public PuntoVendita puntoVenditaCustodie;
 	
 	@OneToMany
 	private List<Orologio> orologiAdattiAllaCustodia;

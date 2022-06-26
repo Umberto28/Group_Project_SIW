@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 
 @Entity
@@ -21,6 +23,8 @@ public class Orologio {
 	@NotBlank
 	private String nome;
 	
+	@Min(0)
+	@Max(999)
 	private float prezzo;
 	
 	private String descrizione;
@@ -32,7 +36,7 @@ public class Orologio {
 	@ManyToOne
 	private Designer designer;
 	
-	@OneToMany(cascade = {CascadeType.ALL}, mappedBy ="orologioConCinturino")
+	@OneToMany(cascade = {CascadeType.REMOVE}, mappedBy ="orologioConCinturino")
 	private List<Cinturino> cinturiniPosseduti;	
 	
 	public Long getId() {

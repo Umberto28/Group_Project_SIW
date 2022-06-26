@@ -52,7 +52,6 @@ public class CustodiaController {
 
 			this.puntoVenditaService.inserisci(pv);
 
-			this.custodiaService.inserisci(c);
 
 			model.addAttribute("custodia", c);
 			return "/Custodia/custodia.html";

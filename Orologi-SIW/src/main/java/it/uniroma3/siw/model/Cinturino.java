@@ -5,6 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 
 @Entity
@@ -19,13 +21,15 @@ public class Cinturino {
 	
 	private int misura;
 	
+	@Min(0)
+	@Max(999)
 	private float prezzo;
 	
 	@ManyToOne
-	private Orologio orologioConCinturino;
+	public Orologio orologioConCinturino;
 	
 	@ManyToOne
-	private PuntoVendita puntoVenditaCinturini;
+	public PuntoVendita puntoVenditaCinturini;
 	
 	public Long getId() {
 		return Id;

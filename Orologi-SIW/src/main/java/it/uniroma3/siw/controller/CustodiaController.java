@@ -88,7 +88,7 @@ public class CustodiaController {
 	@GetMapping("/deleteCustodia")
 	private String deleteCustodia(@RequestParam Long custodiaId) {
 		this.custodiaService.rimuovi(custodiaId);
-		return "redirect:/elencoCustodie";
+		return "redirect:/elencoAccessori";
 	}
 
 	@GetMapping("/admin/updateCustodia")

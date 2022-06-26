@@ -97,7 +97,7 @@ public class OrologioController {
 	@GetMapping("/deleteOrologio")
 	private String deleteOrologio(@RequestParam Long orologioId) {
 		this.orologioService.rimuovi(orologioId);
-		return "redirect:/elencoOrologi";
+		return "redirect:/elencoOrologi.html";
 	}
 
 	@GetMapping("/admin/updateOrologio")
@@ -105,7 +105,7 @@ public class OrologioController {
 		model.addAttribute("orologio", this.orologioService.searchById(orologioId));
 		// potremmo voler cambiare il punto vendita dell'orologio
 		model.addAttribute("puntiVenditaDisponibili", this.puntoVenditaService.findAllPuntiVendita());
-		return "/Orologio/orologioForm.html";
+		return "/Orologio/orologioUpdateForm.html";
 	}
 
 	@GetMapping("/orologioUpdate/{id}")

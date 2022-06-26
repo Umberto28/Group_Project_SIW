@@ -23,7 +23,7 @@
         <!-- FORM SECTION -->
         <div class="p-5 m-5">
             <div class="mb-5">
-                <span class="textFont section-title text-white text-center bgColorD rounded-pill shadow py-2 px-3">- Inserisci designer -</span>
+                <span class="textFont section-title text-white text-center bgColorD rounded-pill shadow py-2 px-3">- Modifica designer -</span>
             </div>
             <hr class="bgColorD">
             <div class="m-4">
@@ -32,7 +32,7 @@
                         <div class="card shadow text-white mt-2 mx-auto p-4" style="background-color: #a69926;">
                             <div class="card-body">
                                 <div class = "container">
-                                    <form id="contact-form" role="form" th:action="@{/admin/designer}" method="POST" th:object="${designer}">
+                                    <form id="contact-form" role="form" th:action="@{'/admin/designer' + '/' + ${designer.id}}" method="POST" th:object="${designer}">
                                         <div th:if="${#fields.hasGlobalErrors()}">
                                             <p th:each="err : ${#fields.globalErrors()}" th:text="${err}">Errore Globale</p>
                                         </div>

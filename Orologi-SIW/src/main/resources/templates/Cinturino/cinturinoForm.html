@@ -72,7 +72,7 @@
                                                         </select>
                                                     </div>
                                                     <div th:unless="${!orologiDisponibili.empty}">
-                                                        <div class="notification p-3 is-danger">Nessun orologio disponibile!</div>
+                                                        <div class="notification p-3 is-danger">Nessun orologio disponibile! <a th:href="@{/admin/orologioForm}" class="text-white">Aggiungilo qui</a></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -86,7 +86,7 @@
                                                         </select>
                                                     </div>
                                                     <div th:unless="${!puntiVenditaDisponibili.empty}">
-                                                        <div class="notification p-3 is-danger">Nessuno store disponibile!</div>
+                                                        <div class="notification p-3 is-danger">Nessuno store disponibile! <a th:href="@{/admin/puntoVenditaForm}" class="text-white">Aggiungilo qui</a></div>
                                                     </div>
                                                 </div>
 

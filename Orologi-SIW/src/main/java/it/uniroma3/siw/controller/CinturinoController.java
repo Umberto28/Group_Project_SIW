@@ -97,7 +97,7 @@ public class CinturinoController {
 	@GetMapping("/deleteCinturino")
 	private String deleteCinturino(@RequestParam Long cinturinoId) {
 		this.cinturinoService.rimuovi(cinturinoId);
-		return "redirect:/elencoCinturini";
+		return "redirect:/elencoAccessori";
 	}
 
 	@GetMapping("/admin/updateCinturino")

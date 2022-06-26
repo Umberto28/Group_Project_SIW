@@ -22,8 +22,12 @@
 
         <!-- FORM SECTION -->
         <div class="p-5 m-5">
-            <div class="mb-5">
+            <div class="d-flex justify-content-between align-items-center mb-5">
                 <span class="textFont section-title text-white text-center bgColorP rounded-pill shadow py-2 px-3">- Dettagli store -</span>
+                <div>
+                    <a th:href="@{/deletePuntoVendita(puntoVenditaId=${puntoVendita.id})}" class="rounded-circle bg-danger p-2"><img th:src="@{/images/deleteIcon.png}" alt="Delete"></a>
+                    <a th:href="@{/admin/updatePuntoVendita(puntoVenditaId=${puntoVendita.id})}" class="rounded-circle bg-primary p-2"><img th:src="@{/images/modificaIcon.png}" alt="Update"></a>
+                </div>
             </div>
             <hr class="bgColorP">
             <div class="d-flex justify-content-center">
@@ -34,11 +38,29 @@
                         <h2 class="textFont">Nome Titolare: </h2><h4 th:text="*{nomeTitolare}">orologio</h4>
                     </div>
                     <div class="textColorP d-inline mr-5">
-                        <h2 class="textFont">Orologi: </h2><h4 class="mb-5" th:if="${orologio}" th:text="${orologio.nome}">orologio</h4>
-                        <h4 class="mb-5" th:unless="${designer}">Nessun orologio assegnato</h4>
+                        <h2 class="textFont">Orologi: </h2>
+                        <div class="mb-5" th:if="${!elencoOrologiInVendita.empty}">
+                            <ul>
+                                <li th:each="orologio : ${elencoOrologiInVendita}" th:text="${orologio.nome}">orologio</li>
+                            </ul>
+                        </div>
+                        <h4 class="mb-5" th:unless="${!elencoOrologiInVendita.empty}">Nessun orologio assegnato</h4>
 
-                        <h2 class="textFont">Accessori: </h2><h4 class="mb-5" th:if="${cinturino}" th:text="${cinturino.nome}">orologio</h4>
-                        <h4 class="mb-5" th:unless="${cinturino}">Nessun accessorio assegnato</h4>
+                        <h2 class="textFont">Cinturini: </h2>
+                        <div class="mb-5" th:if="${!elencoCinturiniInVendita.empty}">
+                            <ul>
+                                <li th:each="cinturino : ${elencoCinturiniInVendita}" th:text="${cinturino.colore}">cinturino</li>
+                            </ul>
+                        </div>
+                        <h4 class="mb-5" th:unless="${!elencoCinturiniInVendita.empty}">Nessun cinturino assegnato</h4>
+
+                        <h2 class="textFont">Custodie: </h2>
+                        <div class="mb-5" th:if="${!elencoCustodieInVendita.empty}">
+                            <ul>
+                                <li th:each="custodia : ${elencoCustodieInVendita}" th:text="${custodia.nome}">custodia</li>
+                            </ul>
+                        </div>
+                        <h4 class="mb-5" th:unless="${!elencoCustodieInVendita.empty}">Nessuna custodia assegnata</h4>
                     </div>
                 </div>
             </div>

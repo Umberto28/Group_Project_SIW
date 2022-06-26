@@ -15,7 +15,7 @@
         <div class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img th:src="@{/images/accessori5.jpg}" class="d-block" height="350" width="1920" alt="home image" style="object-fit: cover;">
+                    <img th:src="@{/images/sfondoIndex5.jpg}" class="d-block" height="350" width="1920" alt="home image" style="object-fit: cover;">
                 </div>
             </div>
         </div>
@@ -23,16 +23,16 @@
         <!-- FORM SECTION -->
         <div class="p-5 m-5">
             <div class="mb-5">
-                <span class="textFont section-title text-white text-center bgColorCu rounded-pill shadow py-2 px-3">- Inserisci custodia -</span>
+                <span class="textFont section-title text-white text-center bgColorO rounded-pill shadow py-2 px-3">- Modifica orologio -</span>
             </div>
-            <hr class="bgColorCu">
+            <hr class="bgColorO">
             <div class="m-4">
                 <div class="row">
                     <div class="col-lg-8 mx-auto">
-                        <div class="card shadow text-white mt-2 mx-auto p-4" style="background-color: #a62633;">
+                        <div class="card shadow text-white mt-2 mx-auto p-4" style="background-color: #3c8c84;">
                             <div class="card-body">
                                 <div class = "container">
-                                    <form id="contact-form" role="form" th:action="@{/admin/custodia}" method="POST" th:object="${custodia}">
+                                    <form id="contact-form" role="form" th:action="@{'/admin/orologio' + '/' + ${orologio.id}}" method="POST" th:object="${orologio}">
                                         <div th:if="${#fields.hasGlobalErrors()}">
                                             <p th:each="err : ${#fields.globalErrors()}" th:text="${err}">Errore Globale</p>
                                         </div>
@@ -41,44 +41,41 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="form_name">Nome</label>
-                                                        <input id="form_name" type="text" name="name" class="form-control" placeholder="Inserisci il nome della custodia" required="required" th:field="*{nome}">
+                                                        <input id="form_name" type="text" name="name" class="form-control" placeholder="Inserisci il nome dell'orologio" required="required" th:field="*{nome}" >
                                                         <span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
                                                     </div>
                                                 </div>
-
                                                 <div class="col-md-6">
-
                                                     <div class="form-group">
                                                         <label for="form_name">Prezzo</label>
-                                                        <input id="form_name" type="number"  min="0" oninput="validity.valid||(value='');" name="name" class="form-control" placeholder="Inserisci il prezzo della custodia" required="required" th:field="*{prezzo}" >
+                                                        <input id="form_name" type="number"  min="0" oninput="validity.valid||(value='');" name="name" class="form-control" placeholder="Inserisci il prezzo dell'orologio" required="required" th:field="*{prezzo}" >
                                                         <span th:if="${#fields.hasErrors('prezzo')}" th:errors="*{prezzo}"></span>
                                                     </div>
-
                                                 </div>
-
-                                                <div class="col-md-6">
+                                                <div class="col-md-12">
                                                     <div class="form-group">
-                                                        <label for="message">Materiale</label>
-                                                        <input id="form_name" type="text" name="name" class="form-control" placeholder="Inserisci il materiale della custodia" required="required" th:field="*{materiale}">
-                                                        <span th:if="${#fields.hasErrors('materiale')}" th:errors="*{materiale}"></span>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="message">Colore</label>
-                                                        <input id="form_name" type="text" name="name" class="form-control" placeholder="Inserisci il colore della custodia" required="required" th:field="*{colore}">
-                                                        <span th:if="${#fields.hasErrors('colore')}" th:errors="*{colore}"></span>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="message">N. Orologi</label>
-                                                        <input id="form_name" type="number" name="name" class="form-control" placeholder="Inserisci il numero di orologi" required="required" th:field="*{numeroOrologi}">
-                                                        <span th:if="${#fields.hasErrors('numeroOrologi')}" th:errors="*{numeroOrologi}"></span>
+                                                        <label for="message">Descrizione</label>
+                                                        <textarea id="form_name" type="text" name="name" class="form-control" placeholder="Inserisci la descrizione dell'orologio" required="required" th:field="*{descrizione}"></textarea>
+                                                        <span th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></span>
                                                     </div>
                                                 </div>
                                             </div>
 
+                                            <div class="col-12 mt-3">
+
+                                                <div class="form-group">
+                                                    <label for="form_name">Seleziona Designer</label>
+                                                    <div th:if="${!designerDisponibili.empty}">
+                                                        <select name="designerScelto" class="form-control" aria-label="Default select example">
+                                                            <option th:each="designer : ${designerDisponibili}" th:value="${designer.id}"><span
+                                                                    th:text="${designer.nome}">Nome designer</span></option>
+                                                        </select>
+                                                    </div>
+                                                    <div th:unless="${!designerDisponibili.empty}">
+                                                        <div class="notification p-3 is-danger">Nessun designer disponibile! <a th:href="@{/admin/designerForm}" class="text-white">Aggiungilo qui</a></div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <div class="col-12 mt-3">
                                                 <div class="form-group">
                                                     <label for="form_name">Seleziona Store</label>

@@ -120,13 +120,13 @@ public class OrologioController {
 			PuntoVendita PVNuovo = this.puntoVenditaService.searchById(PVid);
 			PuntoVendita PVVecchio = o.getPuntoVenditaOrologi();
 			
-			//if(PVVecchio!=null) {
+			if(PVVecchio!=null) {
 				for(Orologio oInList : PVVecchio.getOrologiInVendita()) {
 					if(oInList.getId() == o.getId()) {
 						PVVecchio.getOrologiInVendita().remove(oInList);
 					}
 				}
-			//}
+			}
 				
 	
 			
@@ -139,7 +139,7 @@ public class OrologioController {
 			this.puntoVenditaService.inserisci(PVNuovo);
 			//this.orologioService.inserisci(o);
 			model.addAttribute("orologio", o);
-			//model.addAttribute("elencoCinturiniPosseduti", o.getCinturiniPosseduti());
+			model.addAttribute("elencoCinturiniPosseduti", o.getCinturiniPosseduti());
 			return "/Orologio/orologio.html";
 		}
 		model.addAttribute("orologio", o);

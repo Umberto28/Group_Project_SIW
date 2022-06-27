@@ -100,11 +100,31 @@ public class CustodiaController {
 	}
 
 	@PostMapping("/custodiaUpdate/{id}")
-	private String updateCustodia(@Valid @ModelAttribute("custodia") Custodia c, BindingResult bindingResult,
+	private String updateCustodia(@Valid @ModelAttribute("custodia") Custodia c,
+			@RequestParam(name = "puntoVenditaScelto") Long PVid,
+			BindingResult bindingResult,
 			Model model) {
+		
 		this.custodiaValidator.validate(c, bindingResult);
+		
 		if (!bindingResult.hasErrors()) {
-			this.custodiaService.inserisci(c);
+			PuntoVendita PVNuovo = this.puntoVenditaService.searchById(PVid);
+			PuntoVendita PVVecchio = c.getPuntoVenditaCustodie();
+			
+			if(PVVecchio!=null) {
+				for(Custodia cInList : PVVecchio.getCustodieInVendita()) {
+					if(cInList.getId() == c.getId()) {
+						PVVecchio.getCustodieInVendita().remove(cInList);
+					}
+				}
+			}
+		
+			c.setPuntoVenditaCustodie(PVNuovo);
+			
+			PVNuovo.getCustodieInVendita().add(c);
+			
+			this.puntoVenditaService.inserisci(PVNuovo);
+			
 			model.addAttribute("custodia", c);
 			return "/Custodia/custodia.html";
 		}

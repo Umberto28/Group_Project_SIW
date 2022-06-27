@@ -109,7 +109,7 @@ public class OrologioController {
 		return "/Orologio/orologioUpdateForm.html";
 	}
 
-	@PostMapping("admin/orologioUpdate/{id}")
+	@PostMapping("/admin/orologioUpdate/{id}")
 	private String updateOrologio(@Valid @ModelAttribute("orologio") Orologio o, 
 			@RequestParam(name = "puntoVenditaScelto") Long PVid,
 			BindingResult bindingResult,

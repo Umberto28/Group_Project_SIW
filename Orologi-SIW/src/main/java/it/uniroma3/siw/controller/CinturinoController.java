@@ -108,12 +108,32 @@ public class CinturinoController {
 		return "/Cinturino/cinturinoUpdateForm.html";
 	}
 
-	@PostMapping("/cinturinoUpdate/{id}")
-	private String updateCinturino(@Valid @ModelAttribute("cinturino") Cinturino c, BindingResult bindingResult,
+	@PostMapping("/admin/cinturinoUpdate/{id}")
+	private String updateCinturino(@Valid @ModelAttribute("cinturino") Cinturino c,
+			@RequestParam(name = "puntoVenditaScelto") Long PVid,
+			BindingResult bindingResult,
 			Model model) {
+		
 		this.cinturinoValidator.validate(c, bindingResult);
+		
 		if (!bindingResult.hasErrors()) {
-			this.cinturinoService.inserisci(c);
+			PuntoVendita PVNuovo = this.puntoVenditaService.searchById(PVid);
+			PuntoVendita PVVecchio = c.getPuntoVenditaCinturini();
+			
+			if(PVVecchio!=null) {
+				for(Cinturino cInList : PVVecchio.getCinturiniInVendita()) {
+					if(cInList.getId() == c.getId()) {
+						PVVecchio.getCinturiniInVendita().remove(cInList);
+					}
+				}
+			}
+		
+			c.setPuntoVenditaCinturini(PVNuovo);
+			
+			PVNuovo.getCinturiniInVendita().add(c);
+			
+			this.puntoVenditaService.inserisci(PVNuovo);
+			
 			model.addAttribute("cinturino", c);
 			return "/Cinturino/cinturino.html";
 		}

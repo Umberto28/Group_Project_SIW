@@ -99,7 +99,7 @@ public class CustodiaController {
 		return "/Custodia/custodiaUpdateForm.html";
 	}
 
-	@PostMapping("/custodiaUpdate/{id}")
+	@PostMapping("/admin/custodiaUpdate/{id}")
 	private String updateCustodia(@Valid @ModelAttribute("custodia") Custodia c,
 			@RequestParam(name = "puntoVenditaScelto") Long PVid,
 			BindingResult bindingResult,

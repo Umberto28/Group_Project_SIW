@@ -60,22 +60,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-
-                                            <div class="col-12 mt-3">
-
-                                                <div class="form-group">
-                                                    <label for="form_name">Seleziona Orologio</label>
-                                                    <div th:if="${!orologiDisponibili.empty}">
-                                                        <select name="orologioScelto" class="form-control" aria-label="Default select example">
-                                                            <option th:each="orologio : ${orologiDisponibili}" th:value="${orologio.id}"><span
-                                                                    th:text="${orologio.nome}">Nome orologio</span></option>
-                                                        </select>
-                                                    </div>
-                                                    <div th:unless="${!orologiDisponibili.empty}">
-                                                        <div class="notification p-3 is-danger">Nessun orologio disponibile! <a th:href="@{/admin/orologioForm}" class="text-white">Aggiungilo qui</a></div>
-                                                    </div>
-                                                </div>
-                                            </div>
                                             <div class="col-12 mt-3">
                                                 <div class="form-group">
                                                     <label for="form_name">Seleziona Store</label>

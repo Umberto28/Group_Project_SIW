@@ -39,12 +39,12 @@
                     </div>
                     <div class="textColorD d-inline mr-5">
                         <h2 class="textFont">Orologi: </h2>
-                        <div class="mb-5" th:if="${!elencoOrologiCreati.empty}">
+                        <div class="mb-5" th:if="${elencoOrologiCreati}">
                             <ul>
                                 <li th:each="orologio : ${elencoOrologiCreati}" th:text="${orologio.nome}">orologio</li>
                             </ul>
                         </div>
-                        <h4 class="mb-5" th:unless="${!elencoOrologiCreati.empty}">Nessun orologio assegnato</h4>
+                        <h4 class="mb-5" th:unless="${elencoOrologiCreati}">Nessun orologio assegnato</h4>
                     </div>
                 </div>
             </div>

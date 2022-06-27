@@ -39,28 +39,28 @@
                     </div>
                     <div class="textColorP d-inline mr-5">
                         <h2 class="textFont">Orologi: </h2>
-                        <div class="mb-5" th:if="${!elencoOrologiInVendita.empty}">
+                        <div class="mb-5" th:if="${elencoOrologiInVendita}">
                             <ul>
                                 <li th:each="orologio : ${elencoOrologiInVendita}" th:text="${orologio.nome}">orologio</li>
                             </ul>
                         </div>
-                        <h4 class="mb-5" th:unless="${!elencoOrologiInVendita.empty}">Nessun orologio assegnato</h4>
+                        <h4 class="mb-5" th:unless="${elencoOrologiInVendita}">Nessun orologio assegnato</h4>
 
                         <h2 class="textFont">Cinturini: </h2>
-                        <div class="mb-5" th:if="${!elencoCinturiniInVendita.empty}">
+                        <div class="mb-5" th:if="${elencoCinturiniInVendita}">
                             <ul>
                                 <li th:each="cinturino : ${elencoCinturiniInVendita}" th:text="${cinturino.colore}">cinturino</li>
                             </ul>
                         </div>
-                        <h4 class="mb-5" th:unless="${!elencoCinturiniInVendita.empty}">Nessun cinturino assegnato</h4>
+                        <h4 class="mb-5" th:unless="${elencoCinturiniInVendita}">Nessun cinturino assegnato</h4>
 
                         <h2 class="textFont">Custodie: </h2>
-                        <div class="mb-5" th:if="${!elencoCustodieInVendita.empty}">
+                        <div class="mb-5" th:if="${elencoCustodieInVendita}">
                             <ul>
                                 <li th:each="custodia : ${elencoCustodieInVendita}" th:text="${custodia.nome}">custodia</li>
                             </ul>
                         </div>
-                        <h4 class="mb-5" th:unless="${!elencoCustodieInVendita.empty}">Nessuna custodia assegnata</h4>
+                        <h4 class="mb-5" th:unless="${elencoCustodieInVendita}">Nessuna custodia assegnata</h4>
                     </div>
                 </div>
             </div>

@@ -88,6 +88,9 @@ public class PuntoVenditaController {
 		if (!bindingResult.hasErrors()) {
 			this.puntoVenditaService.inserisci(pv);
 			model.addAttribute("puntoVendita", pv);
+			model.addAttribute("elencoOrologiInVendita", pv.getOrologiInVendita());
+			model.addAttribute("elencoCinturiniInVendita", pv.getCinturiniInVendita());
+			model.addAttribute("elencoCustodieInVendita", pv.getCustodieInVendita());
 			return "/PuntoVendita/puntoVendita.html";
 		}
 		model.addAttribute("puntoVendita", pv);

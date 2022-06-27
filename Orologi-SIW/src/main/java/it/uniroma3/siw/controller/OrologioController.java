@@ -63,6 +63,7 @@ public class OrologioController {
 
 
 			model.addAttribute("orologio", o);
+			model.addAttribute("elencoCinturiniPosseduti", o.getCinturiniPosseduti());
 			return "/Orologio/orologio.html";
 
 		}

@@ -46,12 +46,12 @@
                         <h4 class="mb-5" th:unless="${orologio.puntoVenditaOrologi}">Nessuno Store assegnato</h4>
 
                         <h2 class="textFont">Cinturini: </h2>
-                        <div class="mb-5" th:if="${!elencoCinturiniPosseduti.empty}">
+                        <div class="mb-5" th:if="${elencoCinturiniPosseduti}">
                             <ul>
                                 <li th:each="cinturino : ${elencoCinturiniPosseduti}" th:text="${cinturino.colore}">cinturino</li>
                             </ul>
                         </div>
-                        <h4 class="mb-5" th:unless="${!elencoCinturiniPosseduti.empty}">Nessun cinturino assegnato</h4>
+                        <h4 class="mb-5" th:unless="${elencoCinturiniPosseduti}">Nessun cinturino assegnato</h4>
                     </div>
                 </div>
             </div>

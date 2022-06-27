@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <head>
         <meta charset="UTF-8" />
         <link rel="stylesheet" th:href="@{/css/index.css}">
@@ -15,13 +16,21 @@
         <div class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img th:src="@{/images/sfondoIndex6.jpg}" class="d-block" height="650" width="1920" alt="home image" style="object-fit: cover;">
+                    <img th:src="@{/images/sfondoIndex6.jpg}" class="d-block" height="550" width="1920" alt="home image" style="object-fit: cover;">
                     <div class="carousel-caption text-left">
                         <h1 class="textColor textFont main-title" style="text-shadow: 3px 3px #fff;">Watches Roma Tre</h1>
                     </div>
                 </div>
             </div>
         </div>
+        <div sec:authorize="hasAnyAuthority('ADMIN')" class="mx-5 mt-5 p-2">
+            <div class="alert alert-success" role="alert">
+                <h3 class="alert-heading">Congratulazioni!</h3>
+                <hr>
+                <p style="font-size: 20px;">Hai effettuato l'accesso con i permessi di amministratore!</p>
+            </div>
+        </div>
+        
 
         <!-- WATCH SECTION -->
         <div class="p-5 m-5">

@@ -26,8 +26,8 @@
             <div class="d-flex justify-content-between align-items-center mb-5">
                 <span class="textFont section-title text-white text-center bgColorO rounded-pill shadow py-2 px-3">- Dettagli orologio -</span>
                 <div>
-                    <a sec:authorize="hasAnyAuthority('ADMIN')" th:href="@{/deleteOrologio(orologioId=${orologio.id})}" class="rounded-circle bg-danger p-2"><img th:src="@{/images/deleteIcon.png}" alt="Delete"></a>
-                    <a sec:authorize="hasAnyAuthority('ADMIN')" th:href="@{/admin/updateOrologio(orologioId=${orologio.id})}" class="rounded-circle bg-primary p-2"><img th:src="@{/images/modificaIcon.png}" alt="Update"></a>
+                    <a sec:authorize="hasAnyAuthority('ADMIN')" th:href="@{/deleteOrologio(orologioId=${orologio.id})}" class="btn rounded-circle btn-danger p-2"><img th:src="@{/images/deleteIcon.png}" alt="Delete"></a>
+                    <a sec:authorize="hasAnyAuthority('ADMIN')" th:href="@{/admin/updateOrologio(orologioId=${orologio.id})}" class="btn rounded-circle btn-primary p-2"><img th:src="@{/images/modificaIcon.png}" alt="Update"></a>
                 </div>
                 
             </div>

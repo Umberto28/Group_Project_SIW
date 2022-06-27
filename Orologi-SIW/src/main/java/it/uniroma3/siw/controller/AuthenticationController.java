@@ -1,10 +1,6 @@
 package it.uniroma3.siw.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,12 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import it.uniroma3.siw.controller.validator.CredentialsValidator;
 import it.uniroma3.siw.controller.validator.UserValidator;
-import it.uniroma3.siw.model.Cinturino;
 import it.uniroma3.siw.model.Credentials;
-import it.uniroma3.siw.model.Custodia;
-import it.uniroma3.siw.model.Designer;
-import it.uniroma3.siw.model.Orologio;
-import it.uniroma3.siw.model.PuntoVendita;
 import it.uniroma3.siw.model.User;
 import it.uniroma3.siw.service.CinturinoService;
 import it.uniroma3.siw.service.CredentialsService;
@@ -40,16 +31,16 @@ public class AuthenticationController {
 	@Autowired
 	private CredentialsValidator credentialsValidator;
 	
-	@Autowired
-	private OrologioService os;
-	@Autowired
-	private DesignerService ds;
-	@Autowired
-	private CinturinoService cs;
-	@Autowired
-	private PuntoVenditaService pvs;
-	@Autowired
-	private CustodiaService cus;
+//	@Autowired
+//	private OrologioService os;
+//	@Autowired
+//	private DesignerService ds;
+//	@Autowired
+//	private CinturinoService cs;
+//	@Autowired
+//	private PuntoVenditaService pvs;
+//	@Autowired
+//	private CustodiaService cus;
 	
 	
 	@GetMapping("/register") 
@@ -69,30 +60,14 @@ public class AuthenticationController {
 	public String logout(Model model) {
 		return "index.html";
 	}
-	
-	@GetMapping("/admin/features")
-	public String features(Model model) {
-		List<Cinturino> elencoCinturini = this.cs.findAllCinturini();
-		List<Designer> elencoDesigner = this.ds.findAllDesigner();
-		List<Orologio> elencoOrologi = this.os.findAllOrologi();
-		List<PuntoVendita> elencoPuntiVendita = this.pvs.findAllPuntiVendita();
-		List<Custodia> elencoCustodie = this.cus.findAllCustodie();
-		model.addAttribute("elencoCinturini", elencoCinturini);
-		model.addAttribute("elencoDesigner", elencoDesigner);
-		model.addAttribute("elencoOrologi", elencoOrologi);
-		model.addAttribute("elencoPuntiVendita", elencoPuntiVendita);
-		model.addAttribute("elencoCustodie", elencoCustodie);
-		return "adminFeatures.html";
-	}
-	
-	
+		
     @GetMapping("/default")
     public String defaultAfterLogin(Model model) {
-    	UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
-		if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
-			return "adminPage.html";
-		}
+//    	UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//		Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
+//		if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
+//			return "adminPage.html";
+//		}
 		return "index.html";
 	}
 	

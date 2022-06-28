@@ -1,0 +1,52 @@
+CASO D'USO 1 - Aggiunta di un Orologio - Attore Primario:Amministratore
+
+1. Amministratore accede al sistema tramite username e password
+2. Il Sistema mostra la pagina di avvenuto login o errore
+3. L'amministratore sceglie di poter fare un operazione
+4. Il Sistema mostra le operazioni possibili
+5. L'amministratore sceglie di aggiungere un orologio
+6. L'amministratore inserisce il nome, il prezzo, e la descrizione dell'orologio
+7. Il Sistema mostra i possibili designer a cui assegnare l'orologio
+8. L'amministratore sceglie il designer da assegnare
+9. Il Sistema mostra i possibili punti vendita in cui vendere l'orologio
+10. L'amministratore sceglie il punto vendita a cui assegnare l'orologio
+11. Il Sistema mostra i dettagli dell'orologio creato
+12. L'amministratore prosegue nell'uso del sistema
+
+CASO D'USO 2 - Modifica di un Orologio- Attore Primario:Amministratore
+
+1. Amministratore accede al sistema tramite username e password
+2. Il Sistema mostra la pagina di default
+3. L'amministratore sceglie di poter fare un operazione
+4. Il Sistema mostra le operazioni possibili
+5. L'amministratore sceglie di modificare un orologio
+6. Il sistema mostra i dati precedenti dell'orologio
+7. L'amministratore sceglie i dati da modificare
+8. L'amministratore modifica i dati scelti
+8. Il Sistema mostra i dettagli del'orologio modificato
+9. L'amministratore prosegue nell'uso del sistema
+
+CASO D'USO 3 - Visione Dati di un Designer - Attore Primario:Utente
+
+1. Utente accede al sistema tramite username e password
+2. Il Sistema mostra la pagina di default
+3. L'utente sceglie di visualizzare i designer nel Sistema
+4. Il Sistema mostra i designer disponibili
+5. L'utente sceglie di visualizzare i dati di un determinato designer
+6. Il Sistema mostra i dati di quel designer
+7. L'utente prosegue nell'uso del sistema
+
+
+CASO D'USO 4 - Visione Dati di un Cinturino appartenente a un Orologio appartenente a un Designer- Attore Primario:Utente
+
+1.Utente accede al sistema tramite username e password
+2. Il Sistema mostra la pagina di default
+3. L'utente sceglie di visualizzare i Designer nel Sistema
+4. Il Sistema mostra i Designer disponibili
+5. L'utente sceglie di visualizzare i dati di uno Designer
+6. Il Sistema mostra i dati di quel Designer
+7. L'utente sceglie un Orologio  tra quelli disponibili del Designer di cui visualizzare i dati
+8. Il Sistema mostra i dati di quell'Orologio
+9. L'utente sceglie di vedere il Cinturino assegnato a quell'Orologio
+10. Il Sistema mostra i dati di quel Cinturino
+11. L'utente prosegue nell'uso del sistema

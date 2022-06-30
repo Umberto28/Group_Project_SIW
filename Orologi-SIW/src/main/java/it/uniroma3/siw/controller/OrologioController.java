@@ -127,13 +127,7 @@ public class OrologioController {
 					}
 				}
 			}
-				
-	
 			
-			
-			
-			
-		
 			o.setPuntoVenditaOrologi(PVNuovo);
 			PVNuovo.getOrologiInVendita().add(o);
 			this.puntoVenditaService.inserisci(PVNuovo);

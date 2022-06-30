@@ -12,12 +12,7 @@ import it.uniroma3.siw.controller.validator.CredentialsValidator;
 import it.uniroma3.siw.controller.validator.UserValidator;
 import it.uniroma3.siw.model.Credentials;
 import it.uniroma3.siw.model.User;
-import it.uniroma3.siw.service.CinturinoService;
 import it.uniroma3.siw.service.CredentialsService;
-import it.uniroma3.siw.service.CustodiaService;
-import it.uniroma3.siw.service.DesignerService;
-import it.uniroma3.siw.service.OrologioService;
-import it.uniroma3.siw.service.PuntoVenditaService;
 
 @Controller
 public class AuthenticationController {

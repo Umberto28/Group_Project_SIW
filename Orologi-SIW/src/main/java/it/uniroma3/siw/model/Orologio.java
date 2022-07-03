@@ -30,7 +30,6 @@ public class Orologio {
 	
 	private String descrizione;
 	
-	
 	@ManyToOne
 	@NotNull
 	private PuntoVendita puntoVenditaOrologi;

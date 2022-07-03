@@ -41,7 +41,7 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="form_name">Nome</label>
-                                                        <input id="form_name" type="text" name="name" class="form-control" placeholder="Inserisci il nome dell'orologio" required="required" th:field="*{nome}" >
+                                                        <input id="form_name" type="text" name="name" class="form-control" placeholder="Inserisci il nome dell'orologio" th:field="*{nome}" >
                                                         <span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
                                                     </div>
                                                 </div>

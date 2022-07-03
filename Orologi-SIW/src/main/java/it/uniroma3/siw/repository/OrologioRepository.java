@@ -6,4 +6,5 @@ import it.uniroma3.siw.model.Orologio;
 
 public interface OrologioRepository extends CrudRepository<Orologio, Long> {
 
+	public Orologio findByNome(String nome);
 }

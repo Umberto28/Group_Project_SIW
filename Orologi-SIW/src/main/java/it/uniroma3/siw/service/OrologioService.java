@@ -17,7 +17,13 @@ public class OrologioService {
 	private OrologioRepository orologioRepository;
 	
 	public boolean alreadyExists(Orologio o) {
-		return this.findAllOrologi().contains(o);
+		//return this.findAllOrologi().contains(o);
+		if(this.orologioRepository.findByNome(o.getNome()) != null) {
+			if(this.orologioRepository.findByNome(o.getNome()).getId() != o.getId()) {
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	@Transactional

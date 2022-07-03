@@ -6,4 +6,5 @@ import it.uniroma3.siw.model.Custodia;
 
 public interface CustodiaRepository extends CrudRepository<Custodia, Long> {
 
+	public Custodia findByNome(String nome);
 }

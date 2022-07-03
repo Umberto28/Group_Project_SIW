@@ -18,7 +18,13 @@ public class DesignerService {
 	
 
 	public boolean alreadyExists(Designer d) {
-		return this.findAllDesigner().contains(d);
+		//return this.findAllDesigner().contains(d);
+		if(this.designerRepository.findByNomeAndCognome(d.getNome(), d.getCognome()) != null) {
+			if(this.designerRepository.findByNomeAndCognome(d.getNome(), d.getCognome()).getId() != d.getId()) {
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	@Transactional

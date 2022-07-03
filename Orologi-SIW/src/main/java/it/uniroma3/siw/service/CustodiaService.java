@@ -18,7 +18,13 @@ public class CustodiaService {
 	
 
 	public boolean alreadyExists(Custodia c) {
-		return this.findAllCustodie().contains(c);
+		//return this.findAllCustodie().contains(c);
+		if(this.custodiaRepository.findByNome(c.getNome()) != null) {
+			if(this.custodiaRepository.findByNome(c.getNome()).getId() != c.getId()) {
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	@Transactional

@@ -55,6 +55,11 @@ public class AuthenticationController {
 	public String logout(Model model) {
 		return "index.html";
 	}
+	
+	@GetMapping("/index") 
+	public String index(Model model) {
+		return "index.html";
+	}
 		
     @GetMapping("/default")
     public String defaultAfterLogin(Model model) {

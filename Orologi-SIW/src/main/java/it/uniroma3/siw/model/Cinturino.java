@@ -8,6 +8,7 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Cinturino {
@@ -26,9 +27,11 @@ public class Cinturino {
 	private float prezzo;
 	
 	@ManyToOne
+	@NotNull
 	public Orologio orologioConCinturino;
 	
 	@ManyToOne
+	@NotNull
 	public PuntoVendita puntoVenditaCinturini;
 	
 	public Long getId() {

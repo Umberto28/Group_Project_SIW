@@ -28,7 +28,8 @@
               </ul>
             </div>
             
-            <a class="btn rounded-pill text-white" type="login" th:href="@{/login}" style="background-color: #26A69A;">Sign up | Login</a>
+            <a sec:authorize="!isAuthenticated()" class="btn rounded-pill text-white" type="login" th:href="@{/login}" style="background-color: #26A69A;">Sign up | Login</a>
+            <a sec:authorize="isAuthenticated()" class="btn rounded-pill text-white" type="login" th:href="@{/logout}" style="background-color: #26A69A;">Logout</a>
           </nav>
         </header>
 

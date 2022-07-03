@@ -25,5 +25,17 @@ public class OrologioValidator implements Validator {
 	public boolean supports(Class<?> aClass) {
 		return Orologio.class.equals(aClass);
 	}
+	
+	public void valDes(Long id, Errors errors) {
+		if(id < 0) {
+			errors.reject("NotNull.orologio.designer");
+		}
+	}
+	
+	public void valPV(Long id, Errors errors) {
+		if(id < 0) {
+			errors.reject("NotNull.orologio.puntoVenditaOrologi");
+		}
+	}
 
 }

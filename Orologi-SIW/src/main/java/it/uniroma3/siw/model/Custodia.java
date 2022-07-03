@@ -11,6 +11,7 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Custodia {
@@ -36,6 +37,7 @@ public class Custodia {
 	private float prezzo;
 	
 	@ManyToOne
+	@NotNull
 	public PuntoVendita puntoVenditaCustodie;
 	
 	@OneToMany

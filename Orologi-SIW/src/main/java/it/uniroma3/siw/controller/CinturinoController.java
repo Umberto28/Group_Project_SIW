@@ -43,6 +43,9 @@ public class CinturinoController {
 			BindingResult bindingResult,
 			@RequestParam(name = "orologioScelto") Long Oid,
 			@RequestParam(name = "puntoVenditaScelto") Long PVid, Model model) {
+		
+		this.cinturinoValidator.valOro(Oid, bindingResult);
+		this.cinturinoValidator.valPV(PVid, bindingResult);
 		this.cinturinoValidator.validate(c, bindingResult);
 
 		if (!bindingResult.hasErrors()) {
@@ -65,6 +68,8 @@ public class CinturinoController {
 
 		}
 		model.addAttribute("cinturino", c);
+		model.addAttribute("orologiDisponibili", this.orologioService.findAllOrologi());
+		model.addAttribute("puntiVenditaDisponibili", this.puntoVenditaService.findAllPuntiVendita());
 		return "/Cinturino/cinturinoForm.html";
 
 	}
@@ -104,6 +109,7 @@ public class CinturinoController {
 	private String updateCinturinoForm(@RequestParam Long cinturinoId, Model model) {
 		model.addAttribute("cinturino", this.cinturinoService.searchById(cinturinoId));
 		// potremmo voler cambiare il punto vendita del cinturino
+		model.addAttribute("orologiDisponibili", this.orologioService.findAllOrologi());
 		model.addAttribute("puntiVenditaDisponibili", this.puntoVenditaService.findAllPuntiVendita());
 		return "/Cinturino/cinturinoUpdateForm.html";
 	}
@@ -138,6 +144,8 @@ public class CinturinoController {
 			return "/Cinturino/cinturino.html";
 		}
 		model.addAttribute("cinturino", c);
+		model.addAttribute("orologiDisponibili", this.orologioService.findAllOrologi());
+		model.addAttribute("puntiVenditaDisponibili", this.puntoVenditaService.findAllPuntiVendita());
 		return "/Cinturino/cinturinoUpdateForm.html";
 	}
 

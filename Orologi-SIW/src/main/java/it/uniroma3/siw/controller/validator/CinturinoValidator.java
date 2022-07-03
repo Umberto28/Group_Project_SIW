@@ -28,5 +28,16 @@ public class CinturinoValidator implements Validator {
 		return Cinturino.class.equals(aClass);
 	}
 
+	public void valOro(Long id, Errors errors) {
+		if(id < 0) {
+			errors.reject("NotNull.cinturino.orologioConCinturino");
+		}
+	}
+	
+	public void valPV(Long id, Errors errors) {
+		if(id < 0) {
+			errors.reject("NotNull.cinturino.puntoVenditaCinturini");
+		}
+	}
 	
 }

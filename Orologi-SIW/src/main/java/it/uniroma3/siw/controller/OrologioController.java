@@ -41,7 +41,8 @@ public class OrologioController {
 			@RequestParam(name = "designerScelto") Long Did,
 			@RequestParam(name = "puntoVenditaScelto") Long PVid, Model model) {
 
-
+		this.orologioValidator.valDes(Did, bindingResult);
+		this.orologioValidator.valPV(PVid, bindingResult);
 		this.orologioValidator.validate(o, bindingResult);
 
 		if (!bindingResult.hasErrors()) {
@@ -68,6 +69,8 @@ public class OrologioController {
 
 		}
 		model.addAttribute("orologio", o);
+		model.addAttribute("designerDisponibili", this.designerService.findAllDesigner());
+		model.addAttribute("puntiVenditaDisponibili", this.puntoVenditaService.findAllPuntiVendita());
 		return "/Orologio/orologioForm.html";
 
 	}
@@ -105,6 +108,7 @@ public class OrologioController {
 	private String updateOrologioForm(@RequestParam Long orologioId, Model model) {
 		model.addAttribute("orologio", this.orologioService.searchById(orologioId));
 		// potremmo voler cambiare il punto vendita dell'orologio
+		model.addAttribute("designerDisponibili", this.designerService.findAllDesigner());
 		model.addAttribute("puntiVenditaDisponibili", this.puntoVenditaService.findAllPuntiVendita());
 		return "/Orologio/orologioUpdateForm.html";
 	}
@@ -137,6 +141,8 @@ public class OrologioController {
 			return "/Orologio/orologio.html";
 		}
 		model.addAttribute("orologio", o);
+		model.addAttribute("designerDisponibili", this.designerService.findAllDesigner());
+		model.addAttribute("puntiVenditaDisponibili", this.puntoVenditaService.findAllPuntiVendita());
 		return "/Orologio/orologioUpdateForm.html";
 	}
 }

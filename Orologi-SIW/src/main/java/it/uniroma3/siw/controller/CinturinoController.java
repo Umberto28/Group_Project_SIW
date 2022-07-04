@@ -44,8 +44,6 @@ public class CinturinoController {
 			@RequestParam(name = "orologioScelto") Long Oid,
 			@RequestParam(name = "puntoVenditaScelto") Long PVid, Model model) {
 		
-		this.cinturinoValidator.valOro(Oid, bindingResult);
-		this.cinturinoValidator.valPV(PVid, bindingResult);
 		this.cinturinoValidator.validate(c, bindingResult);
 
 		if (!bindingResult.hasErrors()) {

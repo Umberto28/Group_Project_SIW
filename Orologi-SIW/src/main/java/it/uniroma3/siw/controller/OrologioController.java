@@ -40,8 +40,6 @@ public class OrologioController {
 			@RequestParam(name = "designerScelto") Long Did,
 			@RequestParam(name = "puntoVenditaScelto") Long PVid, Model model) {
 
-		this.orologioValidator.valDes(Did, bindingResult);
-		this.orologioValidator.valPV(PVid, bindingResult);
 		this.orologioValidator.validate(o, bindingResult);
 
 		if (!bindingResult.hasErrors()) {
@@ -59,7 +57,6 @@ public class OrologioController {
 			this.designerService.inserisci(d);
 
 			this.puntoVenditaService.inserisci(pv);
-
 
 			model.addAttribute("elencoOrologi", this.orologioService.findAllOrologi());
 			return "/Orologio/elencoOrologi.html";

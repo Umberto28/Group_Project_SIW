@@ -12,7 +12,6 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 
 @Entity
 public class Orologio {
@@ -31,11 +30,9 @@ public class Orologio {
 	private String descrizione;
 	
 	@ManyToOne
-	@NotNull
 	private PuntoVendita puntoVenditaOrologi;
 	
 	@ManyToOne
-	@NotNull
 	private Designer designer;
 	
 	@OneToMany(cascade = {CascadeType.REMOVE}, mappedBy ="orologioConCinturino")

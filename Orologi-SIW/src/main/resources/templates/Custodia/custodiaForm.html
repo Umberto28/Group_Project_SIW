@@ -89,9 +89,6 @@
                                                         </select>
                                                     </div>
                                                     <div th:unless="${!puntiVenditaDisponibili.empty}">
-                                                        <select name="puntoVenditaScelto" class="form-control" aria-label="Default select example">
-                                                            <option th:value="${-1}"></option>
-                                                        </select>
                                                         <div class="notification p-3 is-danger">Nessuno store disponibile! <a th:href="@{/admin/puntoVenditaForm}" class="text-white">Aggiungilo qui</a></div>
                                                     </div>
                                                 </div>

@@ -26,9 +26,4 @@ public class CustodiaValidator implements Validator{
 		return Custodia.class.equals(aClass);
 	}
 
-	public void valPV(Long id, Errors errors) {
-		if(id < 0) {
-			errors.reject("NotNull.cinturino.puntoVenditaCinturini");
-		}
-	}
 }

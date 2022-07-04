@@ -39,7 +39,6 @@ public class CustodiaController {
 			@RequestParam(name = "puntoVenditaScelto") Long PVid,
 			Model model) {
 
-		this.custodiaValidator.valPV(PVid, bindingResult);
 		this.custodiaValidator.validate(c, bindingResult);
 
 		if (!bindingResult.hasErrors()) {

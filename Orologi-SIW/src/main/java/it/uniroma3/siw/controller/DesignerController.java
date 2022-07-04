@@ -35,9 +35,8 @@ public class DesignerController {
 		if (!bindingResult.hasErrors()) {
 			this.designerService.inserisci(d);
 
-			model.addAttribute("elencoOrologiCreati", d.getOrologiCreati());
-			model.addAttribute("designer", d);
-			return "/Designer/designer.html";
+			model.addAttribute("elencoDesigner", this.designerService.findAllDesigner());
+			return "/Designer/elencoDesigner.html";
 
 		}
 		model.addAttribute("designer", d);

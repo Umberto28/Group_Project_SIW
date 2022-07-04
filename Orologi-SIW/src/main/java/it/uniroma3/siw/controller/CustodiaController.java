@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import it.uniroma3.siw.controller.validator.CustodiaValidator;
 import it.uniroma3.siw.model.Custodia;
 import it.uniroma3.siw.model.PuntoVendita;
+import it.uniroma3.siw.service.CinturinoService;
 import it.uniroma3.siw.service.CustodiaService;
 import it.uniroma3.siw.service.PuntoVenditaService;
 
@@ -25,6 +26,8 @@ public class CustodiaController {
 
 	@Autowired
 	CustodiaService custodiaService;
+	@Autowired
+	CinturinoService cinturinoService;
 	@Autowired
 	CustodiaValidator custodiaValidator;
 	@Autowired
@@ -53,8 +56,9 @@ public class CustodiaController {
 			this.puntoVenditaService.inserisci(pv);
 
 
-			model.addAttribute("custodia", c);
-			return "/Custodia/custodia.html";
+			model.addAttribute("elencoCinturini", this.cinturinoService.findAllCinturini());
+			model.addAttribute("elencoCustodie", this.custodiaService.findAllCustodie());
+			return "/Cinturino/elencoAccessori.html";
 
 		}
 		model.addAttribute("custodia", c);

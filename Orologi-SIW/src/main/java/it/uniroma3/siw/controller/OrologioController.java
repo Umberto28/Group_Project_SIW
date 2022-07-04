@@ -35,7 +35,6 @@ public class OrologioController {
 	PuntoVenditaService puntoVenditaService;
 
 	@PostMapping("/admin/orologio")
-
 	public String addOrologio(@Valid @ModelAttribute("orologio") Orologio o,
 			BindingResult bindingResult,
 			@RequestParam(name = "designerScelto") Long Did,
@@ -46,7 +45,6 @@ public class OrologioController {
 		this.orologioValidator.validate(o, bindingResult);
 
 		if (!bindingResult.hasErrors()) {
-
 
 			Designer d = this.designerService.searchById(Did);
 
@@ -63,16 +61,15 @@ public class OrologioController {
 			this.puntoVenditaService.inserisci(pv);
 
 
-			model.addAttribute("orologio", o);
-			model.addAttribute("elencoCinturiniPosseduti", o.getCinturiniPosseduti());
-			return "/Orologio/orologio.html";
+			model.addAttribute("elencoOrologi", this.orologioService.findAllOrologi());
+			return "/Orologio/elencoOrologi.html";
 
 		}
+		
 		model.addAttribute("orologio", o);
 		model.addAttribute("designerDisponibili", this.designerService.findAllDesigner());
 		model.addAttribute("puntiVenditaDisponibili", this.puntoVenditaService.findAllPuntiVendita());
 		return "/Orologio/orologioForm.html";
-
 	}
 
 	@GetMapping("/elencoOrologi")

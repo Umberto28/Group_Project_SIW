@@ -34,11 +34,9 @@ public class PuntoVenditaController {
 
 		if (!bindingResult.hasErrors()) {
 			this.puntoVenditaService.inserisci(pv);
-			model.addAttribute("elencoOrologiInVendita", pv.getOrologiInVendita());
-			model.addAttribute("elencoCinturiniInVendita", pv.getCinturiniInVendita());
-			model.addAttribute("elencoCustodieInVendita", pv.getCustodieInVendita());
-			model.addAttribute("puntoVendita", pv);
-			return "/PuntoVendita/puntoVendita.html";
+
+			model.addAttribute("elencoPuntiVendita", this.puntoVenditaService.findAllPuntiVendita());
+			return "/PuntoVendita/elencoPuntiVendita.html";
 
 		}
 		model.addAttribute("puntoVendita", pv);
@@ -78,7 +76,7 @@ public class PuntoVenditaController {
 	@GetMapping("/admin/updatePuntoVendita")
 	private String updatePuntoVenditaForm(@RequestParam Long puntoVenditaId, Model model) {
 		model.addAttribute("puntoVendita", this.puntoVenditaService.searchById(puntoVenditaId));
-		return "/PuntoVendita/puntoVendita.html";
+		return "/PuntoVendita/puntoVenditaUpdateForm.html";
 	}
 
 	@PostMapping("/admin/puntoVenditaUpdate/{id}")

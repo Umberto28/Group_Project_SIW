@@ -79,7 +79,7 @@ public class OrologioController {
 	@GetMapping("/admin/orologioForm")
 	private String getOrologioForm(Model model) {
 		model.addAttribute("orologio", new Orologio());
-		model.addAttribute("designerDisponibili", this.designerService.findAllDesigner());
+		model.addAttribute("designerDisponibili", this.designerService.findAllDesignerSorted());
 		model.addAttribute("puntiVenditaDisponibili", this.puntoVenditaService.findAllPuntiVendita());
 		return "/Orologio/orologioForm.html";
 	}
@@ -108,14 +108,19 @@ public class OrologioController {
 	}
 
 	@PostMapping("/admin/orologioUpdate/{id}")
-	private String updateOrologio(@Valid @ModelAttribute("orologio") Orologio o, 
+	private String updateOrologio(@Valid @ModelAttribute("orologio") Orologio o,
+			//@RequestParam(name = "designerScelto") Long Did,
 			@RequestParam(name = "puntoVenditaScelto") Long PVid,
 			BindingResult bindingResult,
 			Model model) {
 		
 		this.orologioValidator.validate(o, bindingResult);
+		
 		if (!bindingResult.hasErrors()) {
+
+			//Designer DNuovo = this.designerService.searchById(Did);
 			PuntoVendita PVNuovo = this.puntoVenditaService.searchById(PVid);
+			
 			PuntoVendita PVVecchio = o.getPuntoVenditaOrologi();
 			
 			if(PVVecchio!=null) {
@@ -126,9 +131,25 @@ public class OrologioController {
 				}
 			}
 			
+			/*Designer DVecchio = o.getDesigner();
+			
+			if(DVecchio!=null) {
+				for(Orologio oInList : DVecchio.getOrologiCreati()) {
+					if(oInList.getId() == o.getId()) {
+						DVecchio.getOrologiCreati().remove(oInList);
+					}
+				}
+			}*/
+						
+			//o.setDesigner(DNuovo);
 			o.setPuntoVenditaOrologi(PVNuovo);
+			
+			//DNuovo.getOrologiCreati().add(o);
 			PVNuovo.getOrologiInVendita().add(o);
+			
+			//this.designerService.inserisci(DNuovo);
 			this.puntoVenditaService.inserisci(PVNuovo);
+			
 			//this.orologioService.inserisci(o);
 			model.addAttribute("orologio", o);
 			model.addAttribute("elencoCinturiniPosseduti", o.getCinturiniPosseduti());
@@ -139,4 +160,5 @@ public class OrologioController {
 		model.addAttribute("puntiVenditaDisponibili", this.puntoVenditaService.findAllPuntiVendita());
 		return "/Orologio/orologioUpdateForm.html";
 	}
+	
 }

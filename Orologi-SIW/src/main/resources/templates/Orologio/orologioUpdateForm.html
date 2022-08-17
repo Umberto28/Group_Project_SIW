@@ -60,6 +60,20 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <!--<div class="col-12 mt-3">
+                                                <div class="form-group">
+                                                    <label for="form_name">Seleziona Designer</label>
+                                                    <div th:if="${!designerDisponibili.empty}">
+                                                        <select name="designerScelto" class="form-control" aria-label="Default select example">
+                                                            <option th:each="designer : ${designerDisponibili}" th:value="${designer.id}"><span
+                                                                    th:text="${designer.nome}">Nome designer</span></option>
+                                                        </select>
+                                                    </div>
+                                                    <div th:unless="${!designerDisponibili.empty}">
+                                                        <div class="notification p-3 is-danger">Nessun designer disponibile! <a th:href="@{/admin/designerForm}" class="text-white">Aggiungilo qui</a></div>
+                                                    </div>
+                                                </div>
+                                            </div>-->
                                             <div class="col-12 mt-3">
                                                 <div class="form-group">
                                                     <label for="form_name">Seleziona Store</label>
@@ -73,9 +87,7 @@
                                                         <div class="notification p-3 is-danger">Nessuno store disponibile! <a th:href="@{/admin/puntoVenditaForm}" class="text-white">Aggiungilo qui</a></div>
                                                     </div>
                                                 </div>
-
-                                            </div> 
-
+                                            </div>
                                             <div class="row mt-4">
                                                 <div class="col-md-12">
                                                     <button type="submit" class="btn btn-dark btn-send pt-2 btn-block text-white"><img th:src="@{/images/confermaIcon.png}" alt="Conferma"></button>

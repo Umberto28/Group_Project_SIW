@@ -53,5 +53,13 @@ public class DesignerService {
 		}
 		return elencoDesigner;
 	}
+	
+	public List<Designer> findAllDesignerSorted(){
+		List<Designer> elencoDesigner = new ArrayList<Designer>();
+		for (Designer d : this.designerRepository.findAllByOrderByNome()) {
+			elencoDesigner.add(d);
+		}
+		return elencoDesigner;
+	}
 
 }

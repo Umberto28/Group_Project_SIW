@@ -77,7 +77,7 @@ public class DesignerController {
 		return "/Designer/designerUpdateForm.html";
 	}
 
-	@GetMapping("/admin/designerUpdate/{id}")
+	@PostMapping("/admin/designerUpdate/{id}")
 	private String updateDesigner(@Valid @ModelAttribute("designer") Designer d, BindingResult bindingResult,
 			Model model) {
 		this.designerValidator.validate(d, bindingResult);
